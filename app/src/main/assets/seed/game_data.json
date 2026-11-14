@@ -1,0 +1,716 @@
+{
+  "version": 1,
+  "treasures": [
+    {
+      "id": "squishy_jelly_watch",
+      "name": "Squishy Jelly Watch",
+      "effect": "Reduces the team's skill cooldowns at the start of battle.",
+      "tags": [
+        "COOLDOWN"
+      ],
+      "modes": [
+        "ARENA",
+        "WORLD_EXPLORATION",
+        "GUILD_BOSS"
+      ]
+    },
+    {
+      "id": "old_pilgrims_scroll",
+      "name": "Old Pilgrim's Scroll",
+      "effect": "Boosts the team's ATK for a period after activation.",
+      "tags": [
+        "BURST"
+      ],
+      "modes": [
+        "GUILD_BOSS",
+        "ARENA"
+      ]
+    },
+    {
+      "id": "booksellers_monocle",
+      "name": "Bookseller's Monocle",
+      "effect": "Raises the team's CRIT% for a time.",
+      "tags": [
+        "CRIT",
+        "BURST"
+      ],
+      "modes": [
+        "GUILD_BOSS",
+        "WORLD_EXPLORATION"
+      ]
+    },
+    {
+      "id": "indomitable_knight_insignia",
+      "name": "Insignia of the Indomitable Knight",
+      "effect": "Grants the frontline a damage-absorbing barrier.",
+      "tags": [
+        "TANK",
+        "SHIELD"
+      ],
+      "modes": [
+        "ARENA",
+        "WORLD_EXPLORATION"
+      ]
+    },
+    {
+      "id": "dream_conductors_whistle",
+      "name": "Dream Conductor's Whistle",
+      "effect": "Revives the first cookie to fall with part of their HP.",
+      "tags": [
+        "REVIVE",
+        "SUSTAIN"
+      ],
+      "modes": [
+        "ARENA"
+      ]
+    }
+  ],
+  "drops": [
+    {
+      "id": "beascuit_poison",
+      "category": "BEASCUIT",
+      "name": "Legendary Poison Beascuit",
+      "element": "POISON",
+      "description": "Boosts Poison-element cookies; attune lines toward ATK / CRIT / Poison DMG.",
+      "sources": [
+        {
+          "name": "Beast Raid reward chests",
+          "type": "BEAST_RAID",
+          "detail": "Higher score tiers drop Legendary grade",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Beast-Yeast stages (Hard Mode)",
+          "type": "HARD_MODE",
+          "detail": "Element of drop follows the episode's region",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Monster Menace",
+          "type": "MONSTER_MENACE",
+          "detail": "Event rotation; limited tickets",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Beascuit shop exchange",
+          "type": "SHOP",
+          "detail": "Spend Beascuit currency for a guaranteed pick",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "beascuit_steel",
+      "category": "BEASCUIT",
+      "name": "Legendary Steel Beascuit",
+      "element": "STEEL",
+      "description": "Boosts Steel-element cookies; attune lines toward ATK / CRIT / Steel DMG.",
+      "sources": [
+        {
+          "name": "Beast Raid reward chests",
+          "type": "BEAST_RAID",
+          "detail": "Higher score tiers drop Legendary grade",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Beast-Yeast stages (Hard Mode)",
+          "type": "HARD_MODE",
+          "detail": "Element of drop follows the episode's region",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Monster Menace",
+          "type": "MONSTER_MENACE",
+          "detail": "Event rotation; limited tickets",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Beascuit shop exchange",
+          "type": "SHOP",
+          "detail": "Spend Beascuit currency for a guaranteed pick",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "beascuit_fire",
+      "category": "BEASCUIT",
+      "name": "Legendary Fire Beascuit",
+      "element": "FIRE",
+      "description": "Boosts Fire-element cookies; attune lines toward ATK / CRIT / Fire DMG.",
+      "sources": [
+        {
+          "name": "Beast Raid reward chests",
+          "type": "BEAST_RAID",
+          "detail": "Higher score tiers drop Legendary grade",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Beast-Yeast stages (Hard Mode)",
+          "type": "HARD_MODE",
+          "detail": "Element of drop follows the episode's region",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Monster Menace",
+          "type": "MONSTER_MENACE",
+          "detail": "Event rotation; limited tickets",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Beascuit shop exchange",
+          "type": "SHOP",
+          "detail": "Spend Beascuit currency for a guaranteed pick",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "beascuit_water",
+      "category": "BEASCUIT",
+      "name": "Legendary Water Beascuit",
+      "element": "WATER",
+      "description": "Boosts Water-element cookies; attune lines toward ATK / CRIT / Water DMG.",
+      "sources": [
+        {
+          "name": "Beast Raid reward chests",
+          "type": "BEAST_RAID",
+          "detail": "Higher score tiers drop Legendary grade",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Beast-Yeast stages (Hard Mode)",
+          "type": "HARD_MODE",
+          "detail": "Element of drop follows the episode's region",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Monster Menace",
+          "type": "MONSTER_MENACE",
+          "detail": "Event rotation; limited tickets",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Beascuit shop exchange",
+          "type": "SHOP",
+          "detail": "Spend Beascuit currency for a guaranteed pick",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "beascuit_earth",
+      "category": "BEASCUIT",
+      "name": "Legendary Earth Beascuit",
+      "element": "EARTH",
+      "description": "Boosts Earth-element cookies; attune lines toward ATK / CRIT / Earth DMG.",
+      "sources": [
+        {
+          "name": "Beast Raid reward chests",
+          "type": "BEAST_RAID",
+          "detail": "Higher score tiers drop Legendary grade",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Beast-Yeast stages (Hard Mode)",
+          "type": "HARD_MODE",
+          "detail": "Element of drop follows the episode's region",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Monster Menace",
+          "type": "MONSTER_MENACE",
+          "detail": "Event rotation; limited tickets",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Beascuit shop exchange",
+          "type": "SHOP",
+          "detail": "Spend Beascuit currency for a guaranteed pick",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "beascuit_light",
+      "category": "BEASCUIT",
+      "name": "Legendary Light Beascuit",
+      "element": "LIGHT",
+      "description": "Boosts Light-element cookies; attune lines toward ATK / CRIT / Light DMG.",
+      "sources": [
+        {
+          "name": "Beast Raid reward chests",
+          "type": "BEAST_RAID",
+          "detail": "Higher score tiers drop Legendary grade",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Beast-Yeast stages (Hard Mode)",
+          "type": "HARD_MODE",
+          "detail": "Element of drop follows the episode's region",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Monster Menace",
+          "type": "MONSTER_MENACE",
+          "detail": "Event rotation; limited tickets",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Beascuit shop exchange",
+          "type": "SHOP",
+          "detail": "Spend Beascuit currency for a guaranteed pick",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "beascuit_darkness",
+      "category": "BEASCUIT",
+      "name": "Legendary Darkness Beascuit",
+      "element": "DARKNESS",
+      "description": "Boosts Darkness-element cookies; attune lines toward ATK / CRIT / Darkness DMG.",
+      "sources": [
+        {
+          "name": "Beast Raid reward chests",
+          "type": "BEAST_RAID",
+          "detail": "Higher score tiers drop Legendary grade",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Beast-Yeast stages (Hard Mode)",
+          "type": "HARD_MODE",
+          "detail": "Element of drop follows the episode's region",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Monster Menace",
+          "type": "MONSTER_MENACE",
+          "detail": "Event rotation; limited tickets",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Beascuit shop exchange",
+          "type": "SHOP",
+          "detail": "Spend Beascuit currency for a guaranteed pick",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "beascuit_ice",
+      "category": "BEASCUIT",
+      "name": "Legendary Ice Beascuit",
+      "element": "ICE",
+      "description": "Boosts Ice-element cookies; attune lines toward ATK / CRIT / Ice DMG.",
+      "sources": [
+        {
+          "name": "Beast Raid reward chests",
+          "type": "BEAST_RAID",
+          "detail": "Higher score tiers drop Legendary grade",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Beast-Yeast stages (Hard Mode)",
+          "type": "HARD_MODE",
+          "detail": "Element of drop follows the episode's region",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Monster Menace",
+          "type": "MONSTER_MENACE",
+          "detail": "Event rotation; limited tickets",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Beascuit shop exchange",
+          "type": "SHOP",
+          "detail": "Spend Beascuit currency for a guaranteed pick",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "beascuit_electricity",
+      "category": "BEASCUIT",
+      "name": "Legendary Electricity Beascuit",
+      "element": "ELECTRICITY",
+      "description": "Boosts Electricity-element cookies; attune lines toward ATK / CRIT / Electricity DMG.",
+      "sources": [
+        {
+          "name": "Beast Raid reward chests",
+          "type": "BEAST_RAID",
+          "detail": "Higher score tiers drop Legendary grade",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Beast-Yeast stages (Hard Mode)",
+          "type": "HARD_MODE",
+          "detail": "Element of drop follows the episode's region",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Monster Menace",
+          "type": "MONSTER_MENACE",
+          "detail": "Event rotation; limited tickets",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Beascuit shop exchange",
+          "type": "SHOP",
+          "detail": "Spend Beascuit currency for a guaranteed pick",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "beascuit_wind",
+      "category": "BEASCUIT",
+      "name": "Legendary Wind Beascuit",
+      "element": "WIND",
+      "description": "Boosts Wind-element cookies; attune lines toward ATK / CRIT / Wind DMG.",
+      "sources": [
+        {
+          "name": "Beast Raid reward chests",
+          "type": "BEAST_RAID",
+          "detail": "Higher score tiers drop Legendary grade",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Beast-Yeast stages (Hard Mode)",
+          "type": "HARD_MODE",
+          "detail": "Element of drop follows the episode's region",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Monster Menace",
+          "type": "MONSTER_MENACE",
+          "detail": "Event rotation; limited tickets",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Beascuit shop exchange",
+          "type": "SHOP",
+          "detail": "Spend Beascuit currency for a guaranteed pick",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "beascuit_epic_any",
+      "category": "BEASCUIT",
+      "name": "Epic Beascuit (random element)",
+      "element": null,
+      "description": "Good stepping-stone and fodder for attunement.",
+      "sources": [
+        {
+          "name": "Beast-Yeast stages (Normal)",
+          "type": "BEAST_YEAST",
+          "detail": "Repeatable stamina farming",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Bounties",
+          "type": "BOUNTY",
+          "detail": "Daily attempts",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "magic_candy_ingredients",
+      "category": "MAGIC_CANDY",
+      "name": "Magic Candy ingredients",
+      "element": null,
+      "description": "Used to unlock and level a cookie's Magic Candy.",
+      "sources": [
+        {
+          "name": "Guild Battle rewards",
+          "type": "GUILD_BATTLE",
+          "detail": "Weekly, based on total damage",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Guild shop",
+          "type": "SHOP",
+          "detail": "Weekly purchase limit",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Seasonal events",
+          "type": "EVENT",
+          "detail": "Event exchange shops",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "magic_candy_fragments",
+      "category": "MAGIC_CANDY",
+      "name": "Cookie-specific Magic Candy fragments",
+      "element": null,
+      "description": "Needed in addition to the generic ingredients.",
+      "sources": [
+        {
+          "name": "Bounties",
+          "type": "BOUNTY",
+          "detail": "Choose the bounty matching the cookie's class",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Event exchange",
+          "type": "EVENT",
+          "detail": "Occasional selectors",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "crystal_jam_ingredients",
+      "category": "CRYSTAL_JAM",
+      "name": "Crystal Jam ingredients",
+      "element": null,
+      "description": "Upgrade material for Ancient / Legendary / Beast Crystal Jam.",
+      "sources": [
+        {
+          "name": "Beast Raid",
+          "type": "BEAST_RAID",
+          "detail": "Main weekly source",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Hard Mode first clears",
+          "type": "HARD_MODE",
+          "detail": "One-time rewards",
+          "efficiency": "GOOD"
+        },
+        {
+          "name": "Event shops",
+          "type": "EVENT",
+          "detail": "Limited stock",
+          "efficiency": "OK"
+        }
+      ]
+    },
+    {
+      "id": "topping_chocolate",
+      "category": "TOPPING",
+      "name": "Swift Chocolate toppings",
+      "element": null,
+      "description": "Cooldown main stat — the most demanded set.",
+      "sources": [
+        {
+          "name": "Topping stages (World Exploration)",
+          "type": "BEAST_YEAST",
+          "detail": "Stage with Chocolate drop listed",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Hard Mode",
+          "type": "HARD_MODE",
+          "detail": "Higher rarity rolls",
+          "efficiency": "GOOD"
+        }
+      ]
+    },
+    {
+      "id": "topping_raspberry",
+      "category": "TOPPING",
+      "name": "Searing Raspberry toppings",
+      "element": null,
+      "description": "ATK main stat for damage dealers.",
+      "sources": [
+        {
+          "name": "Topping stages (World Exploration)",
+          "type": "BEAST_YEAST",
+          "detail": "Stage with Raspberry drop listed",
+          "efficiency": "BEST"
+        },
+        {
+          "name": "Hard Mode",
+          "type": "HARD_MODE",
+          "detail": "Higher rarity rolls",
+          "efficiency": "GOOD"
+        }
+      ]
+    },
+    {
+      "id": "topping_almond",
+      "category": "TOPPING",
+      "name": "Solid Almond toppings",
+      "element": null,
+      "description": "DMG Resist main stat for tanks and Arena backliners.",
+      "sources": [
+        {
+          "name": "Topping stages (World Exploration)",
+          "type": "BEAST_YEAST",
+          "detail": "Stage with Almond drop listed",
+          "efficiency": "BEST"
+        }
+      ]
+    }
+  ],
+  "tierLists": {
+    "ARENA": [
+      {
+        "tier": "S+",
+        "cookies": [
+          "shadow_milk",
+          "burning_spice"
+        ],
+        "notes": {
+          "shadow_milk": "Buff scramble",
+          "burning_spice": "Unkillable front"
+        }
+      },
+      {
+        "tier": "S",
+        "cookies": [
+          "pure_vanilla",
+          "eternal_sugar",
+          "mystic_flour",
+          "frost_queen"
+        ],
+        "notes": {}
+      },
+      {
+        "tier": "A",
+        "cookies": [
+          "hollyberry",
+          "sea_fairy",
+          "stormbringer",
+          "black_pearl"
+        ],
+        "notes": {}
+      },
+      {
+        "tier": "B",
+        "cookies": [
+          "dark_cacao",
+          "clotted_cream",
+          "eclair",
+          "herb"
+        ],
+        "notes": {}
+      },
+      {
+        "tier": "C",
+        "cookies": [
+          "raspberry",
+          "poison_mushroom",
+          "wind_archer",
+          "golden_cheese",
+          "white_lily"
+        ],
+        "notes": {}
+      }
+    ],
+    "WORLD_EXPLORATION": [
+      {
+        "tier": "S+",
+        "cookies": [
+          "eternal_sugar",
+          "golden_cheese"
+        ],
+        "notes": {}
+      },
+      {
+        "tier": "S",
+        "cookies": [
+          "shadow_milk",
+          "burning_spice",
+          "sea_fairy",
+          "wind_archer"
+        ],
+        "notes": {}
+      },
+      {
+        "tier": "A",
+        "cookies": [
+          "pure_vanilla",
+          "white_lily",
+          "dark_cacao",
+          "stormbringer"
+        ],
+        "notes": {}
+      },
+      {
+        "tier": "B",
+        "cookies": [
+          "hollyberry",
+          "frost_queen",
+          "clotted_cream",
+          "herb",
+          "black_pearl"
+        ],
+        "notes": {}
+      },
+      {
+        "tier": "C",
+        "cookies": [
+          "raspberry",
+          "eclair",
+          "poison_mushroom",
+          "mystic_flour"
+        ],
+        "notes": {}
+      }
+    ],
+    "GUILD_BOSS": [
+      {
+        "tier": "S+",
+        "cookies": [
+          "eternal_sugar",
+          "shadow_milk"
+        ],
+        "notes": {
+          "eternal_sugar": "Light teams"
+        }
+      },
+      {
+        "tier": "S",
+        "cookies": [
+          "golden_cheese",
+          "sea_fairy",
+          "stormbringer",
+          "eclair"
+        ],
+        "notes": {
+          "eclair": "Debuff support"
+        }
+      },
+      {
+        "tier": "A",
+        "cookies": [
+          "burning_spice",
+          "white_lily",
+          "black_pearl",
+          "poison_mushroom"
+        ],
+        "notes": {}
+      },
+      {
+        "tier": "B",
+        "cookies": [
+          "pure_vanilla",
+          "dark_cacao",
+          "wind_archer",
+          "clotted_cream",
+          "frost_queen"
+        ],
+        "notes": {}
+      },
+      {
+        "tier": "C",
+        "cookies": [
+          "hollyberry",
+          "raspberry",
+          "herb",
+          "mystic_flour"
+        ],
+        "notes": {}
+      }
+    ]
+  },
+  "coupons": []
+}
