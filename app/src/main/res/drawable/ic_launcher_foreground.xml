@@ -1,0 +1,32 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <!-- legs -->
+    <path android:strokeColor="#E2A66B" android:strokeWidth="9" android:strokeLineCap="round"
+        android:pathData="M48,70 L44,82 M60,70 L64,82" />
+    <!-- arms -->
+    <path android:strokeColor="#E2A66B" android:strokeWidth="9" android:strokeLineCap="round"
+        android:pathData="M45,58 L35,65 M63,58 L73,64" />
+    <!-- outfit -->
+    <path android:fillColor="#FF9EBB"
+        android:pathData="M44,52 h20 a5,5 0 0 1 5,5 v12 a5,5 0 0 1 -5,5 h-20 a5,5 0 0 1 -5,-5 v-12 a5,5 0 0 1 5,-5 z" />
+    <path android:fillColor="#FFFBF5" android:pathData="M54,59 m-1.6,0 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0" />
+    <path android:fillColor="#FFFBF5" android:pathData="M54,66 m-1.6,0 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0" />
+    <!-- head -->
+    <path android:fillColor="#E2A66B" android:pathData="M54,42 m-15,0 a15,15 0 1,0 30,0 a15,15 0 1,0 -30,0" />
+    <!-- frosting -->
+    <path android:fillColor="#7B5CFF"
+        android:pathData="M39,41 C38,25 70,25 69,41 Q66,36 62,39 Q58,34 54,38 Q50,34 46,39 Q42,36 39,41 Z" />
+    <!-- eyes -->
+    <path android:fillColor="#3B2A28" android:pathData="M48,44 m-1.6,0 a1.6,2.2 0 1,0 3.2,0 a1.6,2.2 0 1,0 -3.2,0" />
+    <path android:fillColor="#3B2A28" android:pathData="M60,44 m-1.6,0 a1.6,2.2 0 1,0 3.2,0 a1.6,2.2 0 1,0 -3.2,0" />
+    <!-- smile -->
+    <path android:strokeColor="#3B2A28" android:strokeWidth="1.4" android:strokeLineCap="round"
+        android:pathData="M51,49 Q54,52 57,49" />
+    <!-- cheeks -->
+    <path android:fillColor="#FF8FA8" android:pathData="M45,48 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" />
+    <path android:fillColor="#FF8FA8" android:pathData="M63,48 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" />
+    <!-- sparkle -->
+    <path android:fillColor="#FFE08A"
+        android:pathData="M72,28 Q72,33 77,33 Q72,33 72,38 Q72,33 67,33 Q72,33 72,28 Z" />
+</vector>

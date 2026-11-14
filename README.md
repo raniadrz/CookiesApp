@@ -1,0 +1,102 @@
+# Crumb Codex — an unofficial Cookie Run: Kingdom companion
+
+A native Android companion app for *Cookie Run: Kingdom*, written in Kotlin and Jetpack Compose (Material 3).
+
+> **Unofficial fan project.** It is not affiliated with or endorsed by Devsisters. The app ships no game
+> assets: every picture (cookie mascots, toppings, Beascuits, treasures, candy jars, the launcher icon) is
+> original art drawn in code with Compose `Canvas`.
+
+## Features
+
+| Tab | What it does |
+| --- | --- |
+| **Cookies** | A searchable Cookie-Dex with filters for Rarity, Class, Position and Element, an *Owned* toggle and sorting. Each detail page has an art hero, skill card and separate **PvP / PvE / Guild Boss** build tabs: toppings, Topping Tart, priority substats with target thresholds, Beascuit grade, element and attunement order, play tips, and Magic Candy / Crystal Jam priority. |
+| **Collection** | Mark cookies as owned and track level, stars, ascension, skill level, candy level, power, equipped toppings, tart and Beascuit. The **in-game setting comparison** scores your entered stats against each mode's benchmarks and lets you keep a checklist and notes per cookie. |
+| **Teams** | A 5-slot builder for Arena, World Exploration and Guild Boss. It shows a Front/Middle/Rear formation preview and checks the lineup (no frontline, duplicates, too many healers, empty slots). The synergy summary covers role counts, elemental coverage and a 0–100 score, and treasures are suggested from what the team needs. |
+| **Farming** | A drop finder for Beascuits, Magic Candy, Crystal Jam and topping materials. Filter by category, source (Beast-Yeast, Hard Mode, Monster Menace, Beast Raid…) or element. |
+| **Meta** | Tier lists for each mode, and coupon codes with one-tap **Copy**, **Copy & redeem** (opens the official coupon page), a redeemed checkbox, expiry tracking and adding your own codes. |
+
+It also has light, dark and system themes with pastel glassmorphism. On wide screens (tablets, unfolded foldables) the navigation bar becomes a rail and the Cookie-Dex becomes a two-pane list-detail layout.
+
+## Architecture
+
+MVVM with Clean Architecture layers in one module. Dependencies are wired by hand in `AppContainer`, with no DI framework.
+
+```
+app/src/main/java/com/crumbcodex/crk/
+├── domain/            # Pure Kotlin: models, repository interfaces, use cases (unit-tested)
+│   ├── model/         # Cookie, Build, OwnedCookie, Team, Treasure, DropItem, Coupon, enums
+│   ├── repository/    # CookieRepository, CollectionRepository, TeamRepository, …
+│   └── usecase/       # FilterCookiesUseCase, TeamSynergyCalculator, CompareBuildUseCase
+├── data/
+│   ├── local/         # Room: CrkDatabase, entities, DAOs, type converters
+│   ├── seed/          # JSON DTOs, SeedDataParser (validating), DatabaseSeeder
+│   ├── mapper/        # DTO ↔ entity ↔ domain mapping
+│   ├── repository/    # Repository implementations (Flow-based)
+│   └── prefs/         # Theme preference
+├── di/AppContainer.kt
+└── ui/
+    ├── theme/         # Pastel light/dark colour schemes, typography, shapes
+    ├── components/    # GlassCard, AppBackground, CookieAvatar, procedural GameArt, badges…
+    ├── navigation/    # Type-safe routes, NavigationSuiteScaffold shell, theme menu
+    ├── dex/ detail/ collection/ team/ farming/ meta/   # Screen + ViewModel per feature
+    └── util/
+```
+
+* **Room** tables: `cookies`, `cookie_builds` (FK → cookies), `owned_cookies`, `teams`, `treasures`,
+  `drop_items`, `tier_entries`, `coupons`, `seed_meta`.
+* **Seeding**: on launch `DatabaseSeeder` reads `assets/seed/*.json`, validates it and replaces the
+  static tables in one transaction when the seed version goes up. User data (collection, teams, your coupons) is never touched.
+
+## Adding or editing cookies (JSON seed)
+
+Edit `app/src/main/assets/seed/cookies.json`, then **bump `"version"`**:
+
+```json
+{
+  "id": "my_cookie",
+  "name": "My Cookie",
+  "title": "Short tagline",
+  "rarity": "LEGENDARY",          // BEAST ANCIENT LEGENDARY DRAGON SUPER_EPIC EPIC RARE COMMON SPECIAL
+  "class": "MAGIC",               // BOMBER CHARGE AMBUSH MAGIC RANGED DEFENSE SUPPORT HEALING
+  "position": "MIDDLE",           // FRONT MIDDLE REAR
+  "elements": ["ICE"],            // POISON STEEL FIRE WATER EARTH LIGHT DARKNESS ICE ELECTRICITY WIND
+  "palette": ["#B8E7FF", "#5C7AEA"],   // frosting + outfit colours of the generated mascot
+  "imageUrl": null,               // optional: URL of artwork you have the rights to use
+  "skill": { "name": "…", "cooldown": 15, "description": "…" },
+  "magicCandy": { "kind": "MAGIC_CANDY", "priority": "HIGH", "summary": "…", "effects": ["…"], "ingredients": ["…"] },
+  "builds": [{
+    "mode": "ARENA",              // ARENA WORLD_EXPLORATION GUILD_BOSS
+    "title": "Cooldown nuker",
+    "toppings": [{ "type": "SWIFT_CHOCOLATE", "count": 5 }],   // must total 5
+    "tart": { "name": "Chocolate Tart", "stat": "COOLDOWN" },
+    "substats": [{ "stat": "COOLDOWN", "min": 25, "max": 29.5, "priority": 1 }],
+    "beascuit": { "grade": "LEGENDARY", "element": "ICE", "attunements": ["ATK", "CRIT"] },
+    "notes": ["…"]
+  }]
+}
+```
+
+Tier lists, drop sources, treasures and coupon codes live in `game_data.json` (with its own `"version"`).
+Coupons in the seed use `{ "code": "…", "rewards": "…", "expires": "2026-12-31", "verified": true }`.
+`SeedDataParserTest` checks the bundled files, so a typo in an enum fails the unit tests.
+
+## Data accuracy
+
+The bundled roster, builds, drop sources and tier lists are **sample data written for this project**. Skill
+names and descriptions are short placeholder summaries, not the in-game text. Class, position and element
+assignments and the meta change with patches, so check them in-game and update the JSON. The coupon list
+ships **empty**: add live codes in the app (+ button) or in `game_data.json`.
+
+## Building
+
+Requirements: JDK 17+, Android SDK with platform 35.
+
+```bash
+./gradlew assembleDebug        # build the APK
+./gradlew testDebugUnitTest    # domain + seed-validation unit tests
+```
+
+Stack: AGP 8.7.3, Kotlin 2.0.21, KSP, Compose BOM 2024.12.01, Material 3 + adaptive navigation suite,
+Navigation Compose 2.8 (type-safe routes), Room 2.6.1, kotlinx.serialization, Coil 2.7 (only for the optional `imageUrl`).
+minSdk 26, targetSdk 35.

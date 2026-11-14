@@ -1,0 +1,3297 @@
+{
+  "version": 1,
+  "cookies": [
+    {
+      "id": "shadow_milk",
+      "name": "Shadow Milk Cookie",
+      "title": "Illusion-weaving trickster beast",
+      "rarity": "BEAST",
+      "class": "MAGIC",
+      "position": "MIDDLE",
+      "elements": [
+        "DARKNESS"
+      ],
+      "palette": [
+        "#3D2C8D",
+        "#7FB2FF"
+      ],
+      "skill": {
+        "name": "Masquerade of Mirrors",
+        "cooldown": 15,
+        "description": "Splits the battlefield with illusions, dealing heavy area damage and scrambling enemy buffs for a short time."
+      },
+      "magicCandy": {
+        "kind": "CRYSTAL_JAM",
+        "priority": "HIGH",
+        "summary": "Crystal Jam greatly boosts damage and extends the illusion effect — top priority once unlocked.",
+        "effects": [
+          "+ skill damage",
+          "Longer debuff duration",
+          "Bonus ATK for the team while illusions are active"
+        ],
+        "ingredients": [
+          "Crystal Jam ingredients",
+          "Soulstones",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Cooldown nuker",
+          "summary": "Cast more often than the opposing team; damage comes from skill uptime.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5,
+              "note": "Hit the cap first"
+            },
+            {
+              "stat": "ATK",
+              "min": 10,
+              "priority": 2
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 6,
+              "priority": 3,
+              "note": "Helps survive opening burst"
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "DARKNESS",
+            "attunements": [
+              "ATK",
+              "COOLDOWN",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Fire your skill before the enemy's control lands."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Raw damage",
+          "summary": "Stages are short; front-load as much ATK as possible.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "DARKNESS",
+            "attunements": [
+              "ATK",
+              "ELEMENTAL_DMG",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Boss burst",
+          "summary": "Long fight against one target: stack ATK and CRIT, keep enough cooldown for 3+ casts.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 20,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 12,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "DARKNESS",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": "Match the boss's weak element when possible."
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "eternal_sugar",
+      "name": "Eternal Sugar Cookie",
+      "title": "Radiant beast of endless sweetness",
+      "rarity": "BEAST",
+      "class": "RANGED",
+      "position": "REAR",
+      "elements": [
+        "LIGHT"
+      ],
+      "palette": [
+        "#FFD86B",
+        "#FF9EBB"
+      ],
+      "skill": {
+        "name": "Everlasting Sunrise",
+        "cooldown": 16,
+        "description": "Calls down beams of sugar-light that hit the whole enemy team and leave a burning-bright mark that amplifies follow-up damage."
+      },
+      "magicCandy": {
+        "kind": "CRYSTAL_JAM",
+        "priority": "HIGH",
+        "summary": "Improves the damage-amplifying mark; strong in every mode.",
+        "effects": [
+          "+ skill damage",
+          "Mark also lowers enemy DMG Resist",
+          "Bonus CRIT% vs. marked enemies"
+        ],
+        "ingredients": [
+          "Crystal Jam ingredients",
+          "Soulstones",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Cooldown nuker",
+          "summary": "Cast more often than the opposing team; damage comes from skill uptime.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5,
+              "note": "Hit the cap first"
+            },
+            {
+              "stat": "ATK",
+              "min": 10,
+              "priority": 2
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 6,
+              "priority": 3,
+              "note": "Helps survive opening burst"
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ATK",
+              "COOLDOWN",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Fire your skill before the enemy's control lands."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Raw damage",
+          "summary": "Stages are short; front-load as much ATK as possible.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ATK",
+              "ELEMENTAL_DMG",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Boss burst",
+          "summary": "Long fight against one target: stack ATK and CRIT, keep enough cooldown for 3+ casts.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 20,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 12,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": "Match the boss's weak element when possible."
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "burning_spice",
+      "name": "Burning Spice Cookie",
+      "title": "Unstoppable blazing beast",
+      "rarity": "BEAST",
+      "class": "CHARGE",
+      "position": "FRONT",
+      "elements": [
+        "FIRE"
+      ],
+      "palette": [
+        "#FF5A36",
+        "#2B2B2B"
+      ],
+      "skill": {
+        "name": "Scorched Earth",
+        "cooldown": 14,
+        "description": "Charges through the frontline, setting the ground ablaze and gaining damage reduction while the flames burn."
+      },
+      "magicCandy": {
+        "kind": "CRYSTAL_JAM",
+        "priority": "HIGH",
+        "summary": "Adds lifesteal and stronger self-protection — makes him far harder to kill in Arena.",
+        "effects": [
+          "+ skill damage",
+          "Lifesteal while burning",
+          "Extra DMG Resist after charging"
+        ],
+        "ingredients": [
+          "Crystal Jam ingredients",
+          "Soulstones",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Charging bruiser",
+          "summary": "Dive in early, deal damage and survive the counter-attack.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SOLID_ALMOND",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Almond Tart",
+            "stat": "DMG_RESIST",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 15,
+              "priority": 1
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 18,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "FIRE",
+            "attunements": [
+              "ATK",
+              "DMG_RESIST",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Glass cannon front",
+          "summary": "Stages die fast — go all in on damage.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "FIRE",
+            "attunements": [
+              "ATK",
+              "CRIT",
+              "ELEMENTAL_DMG"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Sustained damage",
+          "summary": "Keep hitting the boss; CRIT scales best over a long fight.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Apple Jelly Tart",
+            "stat": "CRIT",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 22,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 22,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "FIRE",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "mystic_flour",
+      "name": "Mystic Flour Cookie",
+      "title": "Serene beast of fading memories",
+      "rarity": "BEAST",
+      "class": "MAGIC",
+      "position": "REAR",
+      "elements": [
+        "LIGHT"
+      ],
+      "palette": [
+        "#F5F0E6",
+        "#9FD8CB"
+      ],
+      "skill": {
+        "name": "Pale Requiem",
+        "cooldown": 17,
+        "description": "Drains the colour from the enemy team, dealing damage over time and reducing their healing received."
+      },
+      "magicCandy": {
+        "kind": "CRYSTAL_JAM",
+        "priority": "MEDIUM",
+        "summary": "Strengthens the anti-heal; valuable in Arena, optional elsewhere.",
+        "effects": [
+          "+ damage over time",
+          "Stronger healing reduction",
+          "Brief silence on the first cast"
+        ],
+        "ingredients": [
+          "Crystal Jam ingredients",
+          "Soulstones",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Cooldown nuker",
+          "summary": "Cast more often than the opposing team; damage comes from skill uptime.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5,
+              "note": "Hit the cap first"
+            },
+            {
+              "stat": "ATK",
+              "min": 10,
+              "priority": 2
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 6,
+              "priority": 3,
+              "note": "Helps survive opening burst"
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ATK",
+              "COOLDOWN",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Her anti-heal shines against healer-heavy Arena teams."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Raw damage",
+          "summary": "Stages are short; front-load as much ATK as possible.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ATK",
+              "ELEMENTAL_DMG",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Boss burst",
+          "summary": "Long fight against one target: stack ATK and CRIT, keep enough cooldown for 3+ casts.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 20,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 12,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": "Match the boss's weak element when possible."
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "pure_vanilla",
+      "name": "Pure Vanilla Cookie",
+      "title": "Gentle king of light",
+      "rarity": "ANCIENT",
+      "class": "HEALING",
+      "position": "REAR",
+      "elements": [
+        "LIGHT"
+      ],
+      "palette": [
+        "#FFF3C4",
+        "#7AA6FF"
+      ],
+      "skill": {
+        "name": "Blessing of Light",
+        "cooldown": 14,
+        "description": "Heals the whole team, grants a shield and briefly makes allies resistant to damage."
+      },
+      "magicCandy": {
+        "kind": "CRYSTAL_JAM",
+        "priority": "HIGH",
+        "summary": "Bigger shield and team-wide damage reduction — core for Arena defence.",
+        "effects": [
+          "+ healing",
+          "+ shield strength",
+          "Debuff cleanse on cast"
+        ],
+        "ingredients": [
+          "Crystal Jam ingredients",
+          "Soulstones",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Fast healer",
+          "summary": "Heal and cleanse before the enemy's burst finishes your team.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 10,
+              "priority": 2,
+              "note": "Rear cookies still get hit by AoE"
+            },
+            {
+              "stat": "HP",
+              "min": 8,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "COOLDOWN",
+              "DMG_RESIST",
+              "HP"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Healing scales with ATK/HP depending on the cookie — check your skill text."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Comfort sustain",
+          "summary": "Keeps a farming team topped up.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 3
+            },
+            {
+              "type": "SOLID_ALMOND",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 15,
+              "priority": 2
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "COOLDOWN",
+              "HP",
+              "DMG_RESIST"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Buff-bot",
+          "summary": "In boss fights the value is the buff/heal uptime, not the healing amount.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "ATK",
+              "min": 8,
+              "priority": 2
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "COOLDOWN",
+              "ATK",
+              "HP"
+            ],
+            "note": ""
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "hollyberry",
+      "name": "Hollyberry Cookie",
+      "title": "Steadfast queen of the frontline",
+      "rarity": "ANCIENT",
+      "class": "DEFENSE",
+      "position": "FRONT",
+      "elements": [
+        "EARTH"
+      ],
+      "palette": [
+        "#D7263D",
+        "#F5B700"
+      ],
+      "skill": {
+        "name": "Unyielding Shield",
+        "cooldown": 15,
+        "description": "Raises a huge shield, taunts nearby enemies and reflects part of the damage she blocks."
+      },
+      "magicCandy": {
+        "kind": "CRYSTAL_JAM",
+        "priority": "MEDIUM",
+        "summary": "Longer taunt and reflect; good for Arena defence teams.",
+        "effects": [
+          "+ shield HP",
+          "Longer taunt",
+          "Damage reflect"
+        ],
+        "ingredients": [
+          "Crystal Jam ingredients",
+          "Soulstones",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Unbreakable wall",
+          "summary": "Soak the enemy's opening and keep the backline alive.",
+          "toppings": [
+            {
+              "type": "SOLID_ALMOND",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Almond Tart",
+            "stat": "DMG_RESIST",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "DMG_RESIST",
+              "min": 30,
+              "priority": 1,
+              "note": "Total including the set bonus"
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 12,
+              "priority": 2
+            },
+            {
+              "stat": "HP",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "EARTH",
+            "attunements": [
+              "DMG_RESIST",
+              "HP",
+              "DEF"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Pair with a healer so the shield/taunt window is never wasted."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Sturdy front",
+          "summary": "Comfortable frontline for clearing stages without micromanagement.",
+          "toppings": [
+            {
+              "type": "SOLID_ALMOND",
+              "count": 3
+            },
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Almond Tart",
+            "stat": "DMG_RESIST",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "DMG_RESIST",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 15,
+              "priority": 2
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "EARTH",
+            "attunements": [
+              "DMG_RESIST",
+              "HP",
+              "COOLDOWN"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Utility tank",
+          "summary": "Boss damage is predictable — shave resist for more skill casts.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 3
+            },
+            {
+              "type": "SOLID_ALMOND",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 18,
+              "priority": 2
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "EARTH",
+            "attunements": [
+              "COOLDOWN",
+              "DMG_RESIST",
+              "HP"
+            ],
+            "note": ""
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "dark_cacao",
+      "name": "Dark Cacao Cookie",
+      "title": "Stern king of the cold mountains",
+      "rarity": "ANCIENT",
+      "class": "CHARGE",
+      "position": "FRONT",
+      "elements": [
+        "DARKNESS"
+      ],
+      "palette": [
+        "#4B2E2B",
+        "#A8B8C8"
+      ],
+      "skill": {
+        "name": "Avalanche Strike",
+        "cooldown": 13,
+        "description": "Swings his great sword in a wide arc, damaging enemies in front and slowing them."
+      },
+      "magicCandy": {
+        "kind": "CRYSTAL_JAM",
+        "priority": "MEDIUM",
+        "summary": "Adds a stun on the final swing.",
+        "effects": [
+          "+ skill damage",
+          "Stun on the last hit"
+        ],
+        "ingredients": [
+          "Crystal Jam ingredients",
+          "Soulstones",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Charging bruiser",
+          "summary": "Dive in early, deal damage and survive the counter-attack.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SOLID_ALMOND",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Almond Tart",
+            "stat": "DMG_RESIST",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 15,
+              "priority": 1
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 18,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "DARKNESS",
+            "attunements": [
+              "ATK",
+              "DMG_RESIST",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Glass cannon front",
+          "summary": "Stages die fast — go all in on damage.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "DARKNESS",
+            "attunements": [
+              "ATK",
+              "CRIT",
+              "ELEMENTAL_DMG"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Sustained damage",
+          "summary": "Keep hitting the boss; CRIT scales best over a long fight.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Apple Jelly Tart",
+            "stat": "CRIT",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 22,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 22,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "DARKNESS",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "golden_cheese",
+      "name": "Golden Cheese Cookie",
+      "title": "Radiant queen of treasure",
+      "rarity": "ANCIENT",
+      "class": "RANGED",
+      "position": "REAR",
+      "elements": [
+        "LIGHT"
+      ],
+      "palette": [
+        "#FFC93C",
+        "#FFFFFF"
+      ],
+      "skill": {
+        "name": "Rain of Gold",
+        "cooldown": 14,
+        "description": "Fires a volley of golden arrows over the whole battlefield, damaging and briefly blinding enemies."
+      },
+      "magicCandy": {
+        "kind": "CRYSTAL_JAM",
+        "priority": "HIGH",
+        "summary": "Massive damage boost to the arrow volley.",
+        "effects": [
+          "+ skill damage",
+          "Extra arrows",
+          "CRIT DMG bonus"
+        ],
+        "ingredients": [
+          "Crystal Jam ingredients",
+          "Soulstones",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Cooldown nuker",
+          "summary": "Cast more often than the opposing team; damage comes from skill uptime.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5,
+              "note": "Hit the cap first"
+            },
+            {
+              "stat": "ATK",
+              "min": 10,
+              "priority": 2
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 6,
+              "priority": 3,
+              "note": "Helps survive opening burst"
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ATK",
+              "COOLDOWN",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Fire your skill before the enemy's control lands."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Raw damage",
+          "summary": "Stages are short; front-load as much ATK as possible.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ATK",
+              "ELEMENTAL_DMG",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Boss burst",
+          "summary": "Long fight against one target: stack ATK and CRIT, keep enough cooldown for 3+ casts.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 20,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 12,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": "Match the boss's weak element when possible."
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "white_lily",
+      "name": "White Lily Cookie",
+      "title": "Quiet scholar of creation",
+      "rarity": "ANCIENT",
+      "class": "MAGIC",
+      "position": "MIDDLE",
+      "elements": [
+        "LIGHT"
+      ],
+      "palette": [
+        "#F7F7FF",
+        "#C9B8FF"
+      ],
+      "skill": {
+        "name": "Bloom of Creation",
+        "cooldown": 16,
+        "description": "Summons a field of flowers that damages enemies over time and empowers allies standing inside."
+      },
+      "magicCandy": {
+        "kind": "CRYSTAL_JAM",
+        "priority": "MEDIUM",
+        "summary": "Larger flower field and stronger ally buff.",
+        "effects": [
+          "+ field damage",
+          "Larger radius"
+        ],
+        "ingredients": [
+          "Crystal Jam ingredients",
+          "Soulstones",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Cooldown nuker",
+          "summary": "Cast more often than the opposing team; damage comes from skill uptime.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5,
+              "note": "Hit the cap first"
+            },
+            {
+              "stat": "ATK",
+              "min": 10,
+              "priority": 2
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 6,
+              "priority": 3,
+              "note": "Helps survive opening burst"
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ATK",
+              "COOLDOWN",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Fire your skill before the enemy's control lands."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Raw damage",
+          "summary": "Stages are short; front-load as much ATK as possible.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ATK",
+              "ELEMENTAL_DMG",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Boss burst",
+          "summary": "Long fight against one target: stack ATK and CRIT, keep enough cooldown for 3+ casts.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 20,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 12,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": "Match the boss's weak element when possible."
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "frost_queen",
+      "name": "Frost Queen Cookie",
+      "title": "Ruler of the frozen north",
+      "rarity": "LEGENDARY",
+      "class": "MAGIC",
+      "position": "MIDDLE",
+      "elements": [
+        "ICE"
+      ],
+      "palette": [
+        "#B8E7FF",
+        "#5C7AEA"
+      ],
+      "skill": {
+        "name": "Glacial Storm",
+        "cooldown": 15,
+        "description": "Freezes the enemy team in a blizzard, dealing damage and making frozen targets take extra damage."
+      },
+      "magicCandy": {
+        "kind": "MAGIC_CANDY",
+        "priority": "HIGH",
+        "summary": "Extends freeze — one of the strongest control tools.",
+        "effects": [
+          "Longer freeze",
+          "+ damage to frozen targets"
+        ],
+        "ingredients": [
+          "Magic Candy ingredients",
+          "Magic Candy fragments",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Cooldown nuker",
+          "summary": "Cast more often than the opposing team; damage comes from skill uptime.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5,
+              "note": "Hit the cap first"
+            },
+            {
+              "stat": "ATK",
+              "min": 10,
+              "priority": 2
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 6,
+              "priority": 3,
+              "note": "Helps survive opening burst"
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "ICE",
+            "attunements": [
+              "ATK",
+              "COOLDOWN",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Freeze first, then let your burst cookies finish."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Raw damage",
+          "summary": "Stages are short; front-load as much ATK as possible.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "ICE",
+            "attunements": [
+              "ATK",
+              "ELEMENTAL_DMG",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Boss burst",
+          "summary": "Long fight against one target: stack ATK and CRIT, keep enough cooldown for 3+ casts.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 20,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 12,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "ICE",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": "Match the boss's weak element when possible."
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "sea_fairy",
+      "name": "Sea Fairy Cookie",
+      "title": "Lonely guardian of the deep",
+      "rarity": "LEGENDARY",
+      "class": "BOMBER",
+      "position": "REAR",
+      "elements": [
+        "WATER"
+      ],
+      "palette": [
+        "#5BC0EB",
+        "#FDE74C"
+      ],
+      "skill": {
+        "name": "Tidal Crash",
+        "cooldown": 16,
+        "description": "Drops a crashing wave on the strongest enemy, stunning them and splashing nearby foes."
+      },
+      "magicCandy": {
+        "kind": "MAGIC_CANDY",
+        "priority": "HIGH",
+        "summary": "Adds an extra wave and stronger stun.",
+        "effects": [
+          "+ skill damage",
+          "Longer stun"
+        ],
+        "ingredients": [
+          "Magic Candy ingredients",
+          "Magic Candy fragments",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Cooldown nuker",
+          "summary": "Cast more often than the opposing team; damage comes from skill uptime.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5,
+              "note": "Hit the cap first"
+            },
+            {
+              "stat": "ATK",
+              "min": 10,
+              "priority": 2
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 6,
+              "priority": 3,
+              "note": "Helps survive opening burst"
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "WATER",
+            "attunements": [
+              "ATK",
+              "COOLDOWN",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Fire your skill before the enemy's control lands."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Raw damage",
+          "summary": "Stages are short; front-load as much ATK as possible.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "WATER",
+            "attunements": [
+              "ATK",
+              "ELEMENTAL_DMG",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Boss burst",
+          "summary": "Long fight against one target: stack ATK and CRIT, keep enough cooldown for 3+ casts.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 20,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 12,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "WATER",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": "Match the boss's weak element when possible."
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "wind_archer",
+      "name": "Wind Archer Cookie",
+      "title": "Wandering archer of the gales",
+      "rarity": "LEGENDARY",
+      "class": "RANGED",
+      "position": "REAR",
+      "elements": [
+        "WIND"
+      ],
+      "palette": [
+        "#7BD389",
+        "#F4F1DE"
+      ],
+      "skill": {
+        "name": "Gale Arrow",
+        "cooldown": 13,
+        "description": "Looses a piercing arrow wrapped in wind that knocks enemies back along its path."
+      },
+      "magicCandy": {
+        "kind": "MAGIC_CANDY",
+        "priority": "MEDIUM",
+        "summary": "More piercing damage.",
+        "effects": [
+          "+ skill damage",
+          "Ignores part of DMG Resist"
+        ],
+        "ingredients": [
+          "Magic Candy ingredients",
+          "Magic Candy fragments",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Cooldown nuker",
+          "summary": "Cast more often than the opposing team; damage comes from skill uptime.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5,
+              "note": "Hit the cap first"
+            },
+            {
+              "stat": "ATK",
+              "min": 10,
+              "priority": 2
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 6,
+              "priority": 3,
+              "note": "Helps survive opening burst"
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "WIND",
+            "attunements": [
+              "ATK",
+              "COOLDOWN",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Fire your skill before the enemy's control lands."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Raw damage",
+          "summary": "Stages are short; front-load as much ATK as possible.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "WIND",
+            "attunements": [
+              "ATK",
+              "ELEMENTAL_DMG",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Boss burst",
+          "summary": "Long fight against one target: stack ATK and CRIT, keep enough cooldown for 3+ casts.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 20,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 12,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "WIND",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": "Match the boss's weak element when possible."
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "stormbringer",
+      "name": "Stormbringer Cookie",
+      "title": "Thunder-chasing wanderer",
+      "rarity": "LEGENDARY",
+      "class": "AMBUSH",
+      "position": "MIDDLE",
+      "elements": [
+        "ELECTRICITY",
+        "WIND"
+      ],
+      "palette": [
+        "#3A506B",
+        "#FFE66D"
+      ],
+      "skill": {
+        "name": "Eye of the Storm",
+        "cooldown": 15,
+        "description": "Becomes untargetable inside a storm, then strikes the backline with chained lightning."
+      },
+      "magicCandy": {
+        "kind": "MAGIC_CANDY",
+        "priority": "HIGH",
+        "summary": "Chains to more targets.",
+        "effects": [
+          "+ chain count",
+          "+ CRIT%"
+        ],
+        "ingredients": [
+          "Magic Candy ingredients",
+          "Magic Candy fragments",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Cooldown nuker",
+          "summary": "Cast more often than the opposing team; damage comes from skill uptime.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5,
+              "note": "Hit the cap first"
+            },
+            {
+              "stat": "ATK",
+              "min": 10,
+              "priority": 2
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 6,
+              "priority": 3,
+              "note": "Helps survive opening burst"
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "ELECTRICITY",
+            "attunements": [
+              "ATK",
+              "COOLDOWN",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Fire your skill before the enemy's control lands."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Raw damage",
+          "summary": "Stages are short; front-load as much ATK as possible.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "ELECTRICITY",
+            "attunements": [
+              "ATK",
+              "ELEMENTAL_DMG",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Boss burst",
+          "summary": "Long fight against one target: stack ATK and CRIT, keep enough cooldown for 3+ casts.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 20,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 12,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "ELECTRICITY",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": "Match the boss's weak element when possible."
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "black_pearl",
+      "name": "Black Pearl Cookie",
+      "title": "Vengeful spirit of the abyss",
+      "rarity": "LEGENDARY",
+      "class": "AMBUSH",
+      "position": "MIDDLE",
+      "elements": [
+        "WATER",
+        "DARKNESS"
+      ],
+      "palette": [
+        "#1B1B3A",
+        "#6CD4FF"
+      ],
+      "skill": {
+        "name": "Abyssal Undertow",
+        "cooldown": 15,
+        "description": "Drags the farthest enemy forward with a whirlpool and deals heavy damage to everyone caught in it."
+      },
+      "magicCandy": {
+        "kind": "MAGIC_CANDY",
+        "priority": "MEDIUM",
+        "summary": "Larger whirlpool.",
+        "effects": [
+          "+ skill damage",
+          "Pull also silences"
+        ],
+        "ingredients": [
+          "Magic Candy ingredients",
+          "Magic Candy fragments",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Cooldown nuker",
+          "summary": "Cast more often than the opposing team; damage comes from skill uptime.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5,
+              "note": "Hit the cap first"
+            },
+            {
+              "stat": "ATK",
+              "min": 10,
+              "priority": 2
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 6,
+              "priority": 3,
+              "note": "Helps survive opening burst"
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "WATER",
+            "attunements": [
+              "ATK",
+              "COOLDOWN",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Fire your skill before the enemy's control lands."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Raw damage",
+          "summary": "Stages are short; front-load as much ATK as possible.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "WATER",
+            "attunements": [
+              "ATK",
+              "ELEMENTAL_DMG",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Boss burst",
+          "summary": "Long fight against one target: stack ATK and CRIT, keep enough cooldown for 3+ casts.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 20,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 12,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "WATER",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": "Match the boss's weak element when possible."
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "clotted_cream",
+      "name": "Clotted Cream Cookie",
+      "title": "Keeper of time's balance",
+      "rarity": "SUPER_EPIC",
+      "class": "MAGIC",
+      "position": "MIDDLE",
+      "elements": [
+        "LIGHT"
+      ],
+      "palette": [
+        "#FFF5D6",
+        "#C59D5F"
+      ],
+      "skill": {
+        "name": "Clockwork Verdict",
+        "cooldown": 15,
+        "description": "Rewinds part of the damage his team took and hurls it back at enemies as light."
+      },
+      "magicCandy": {
+        "kind": "MAGIC_CANDY",
+        "priority": "MEDIUM",
+        "summary": "Stronger rewind.",
+        "effects": [
+          "+ skill damage",
+          "Bigger rewind heal"
+        ],
+        "ingredients": [
+          "Magic Candy ingredients",
+          "Magic Candy fragments",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Cooldown nuker",
+          "summary": "Cast more often than the opposing team; damage comes from skill uptime.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5,
+              "note": "Hit the cap first"
+            },
+            {
+              "stat": "ATK",
+              "min": 10,
+              "priority": 2
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 6,
+              "priority": 3,
+              "note": "Helps survive opening burst"
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ATK",
+              "COOLDOWN",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Fire your skill before the enemy's control lands."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Raw damage",
+          "summary": "Stages are short; front-load as much ATK as possible.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ATK",
+              "ELEMENTAL_DMG",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Boss burst",
+          "summary": "Long fight against one target: stack ATK and CRIT, keep enough cooldown for 3+ casts.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 20,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 12,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "LIGHT",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": "Match the boss's weak element when possible."
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "raspberry",
+      "name": "Raspberry Cookie",
+      "title": "Fiery-tempered knight",
+      "rarity": "EPIC",
+      "class": "AMBUSH",
+      "position": "FRONT",
+      "elements": [
+        "FIRE"
+      ],
+      "palette": [
+        "#E5486A",
+        "#FFD6E0"
+      ],
+      "skill": {
+        "name": "Crimson Lunge",
+        "cooldown": 11,
+        "description": "Dashes to the weakest enemy with a flurry of thrusts; each hit adds a stacking burn."
+      },
+      "magicCandy": {
+        "kind": "MAGIC_CANDY",
+        "priority": "LOW",
+        "summary": "Small damage increase — upgrade after your main carries.",
+        "effects": [
+          "+ burn stacks"
+        ],
+        "ingredients": [
+          "Magic Candy ingredients",
+          "Magic Candy fragments",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Charging bruiser",
+          "summary": "Dive in early, deal damage and survive the counter-attack.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SOLID_ALMOND",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Almond Tart",
+            "stat": "DMG_RESIST",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 15,
+              "priority": 1
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 18,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "FIRE",
+            "attunements": [
+              "ATK",
+              "DMG_RESIST",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Glass cannon front",
+          "summary": "Stages die fast — go all in on damage.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "FIRE",
+            "attunements": [
+              "ATK",
+              "CRIT",
+              "ELEMENTAL_DMG"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Sustained damage",
+          "summary": "Keep hitting the boss; CRIT scales best over a long fight.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Apple Jelly Tart",
+            "stat": "CRIT",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 22,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 22,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "FIRE",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "eclair",
+      "name": "Eclair Cookie",
+      "title": "Bookish strategist",
+      "rarity": "EPIC",
+      "class": "SUPPORT",
+      "position": "REAR",
+      "elements": [
+        "ELECTRICITY"
+      ],
+      "palette": [
+        "#6F4E37",
+        "#F4D35E"
+      ],
+      "skill": {
+        "name": "Field Notes",
+        "cooldown": 12,
+        "description": "Deploys a drone that marks enemies, lowering their DMG Resist and boosting allies' CRIT% against them."
+      },
+      "magicCandy": {
+        "kind": "NONE",
+        "priority": "SKIP",
+        "summary": "",
+        "effects": [],
+        "ingredients": []
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Cooldown support",
+          "summary": "Buffs and debuffs need to land before the enemy acts.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 10,
+              "priority": 2,
+              "note": "Rear cookies still get hit by AoE"
+            },
+            {
+              "stat": "HP",
+              "min": 8,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "ELECTRICITY",
+            "attunements": [
+              "COOLDOWN",
+              "DMG_RESIST",
+              "HP"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Healing scales with ATK/HP depending on the cookie — check your skill text."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Comfort sustain",
+          "summary": "Keeps a farming team topped up.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 3
+            },
+            {
+              "type": "SOLID_ALMOND",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 15,
+              "priority": 2
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "ELECTRICITY",
+            "attunements": [
+              "COOLDOWN",
+              "HP",
+              "DMG_RESIST"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Damage amplifier",
+          "summary": "Maximise buff/debuff uptime on the boss.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "ATK",
+              "min": 8,
+              "priority": 2
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "ELECTRICITY",
+            "attunements": [
+              "COOLDOWN",
+              "ATK",
+              "HP"
+            ],
+            "note": ""
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "herb",
+      "name": "Herb Cookie",
+      "title": "Patient gardener-healer",
+      "rarity": "EPIC",
+      "class": "HEALING",
+      "position": "REAR",
+      "elements": [
+        "EARTH"
+      ],
+      "palette": [
+        "#6A994E",
+        "#F2E8CF"
+      ],
+      "skill": {
+        "name": "Garden of Respite",
+        "cooldown": 14,
+        "description": "Plants a healing garden that restores HP over time and cleanses one debuff per tick."
+      },
+      "magicCandy": {
+        "kind": "MAGIC_CANDY",
+        "priority": "LOW",
+        "summary": "Small healing boost.",
+        "effects": [
+          "+ heal per tick"
+        ],
+        "ingredients": [
+          "Magic Candy ingredients",
+          "Magic Candy fragments",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Fast healer",
+          "summary": "Heal and cleanse before the enemy's burst finishes your team.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 10,
+              "priority": 2,
+              "note": "Rear cookies still get hit by AoE"
+            },
+            {
+              "stat": "HP",
+              "min": 8,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "EARTH",
+            "attunements": [
+              "COOLDOWN",
+              "DMG_RESIST",
+              "HP"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Healing scales with ATK/HP depending on the cookie — check your skill text."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Comfort sustain",
+          "summary": "Keeps a farming team topped up.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 3
+            },
+            {
+              "type": "SOLID_ALMOND",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 15,
+              "priority": 2
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "EARTH",
+            "attunements": [
+              "COOLDOWN",
+              "HP",
+              "DMG_RESIST"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Buff-bot",
+          "summary": "In boss fights the value is the buff/heal uptime, not the healing amount.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "ATK",
+              "min": 8,
+              "priority": 2
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "EARTH",
+            "attunements": [
+              "COOLDOWN",
+              "ATK",
+              "HP"
+            ],
+            "note": ""
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "poison_mushroom",
+      "name": "Poison Mushroom Cookie",
+      "title": "Mischievous spore-thrower",
+      "rarity": "EPIC",
+      "class": "BOMBER",
+      "position": "REAR",
+      "elements": [
+        "POISON"
+      ],
+      "palette": [
+        "#9BCF53",
+        "#7A3E9D"
+      ],
+      "skill": {
+        "name": "Spore Cloud",
+        "cooldown": 12,
+        "description": "Throws a bursting mushroom that leaves a poison cloud, damaging and weakening enemies' healing."
+      },
+      "magicCandy": {
+        "kind": "MAGIC_CANDY",
+        "priority": "MEDIUM",
+        "summary": "Larger, longer cloud.",
+        "effects": [
+          "+ poison damage",
+          "Longer duration"
+        ],
+        "ingredients": [
+          "Magic Candy ingredients",
+          "Magic Candy fragments",
+          "Coins"
+        ]
+      },
+      "builds": [
+        {
+          "mode": "ARENA",
+          "title": "Cooldown nuker",
+          "summary": "Cast more often than the opposing team; damage comes from skill uptime.",
+          "toppings": [
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Chocolate Tart",
+            "stat": "COOLDOWN",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "COOLDOWN",
+              "min": 25,
+              "priority": 1,
+              "max": 29.5,
+              "note": "Hit the cap first"
+            },
+            {
+              "stat": "ATK",
+              "min": 10,
+              "priority": 2
+            },
+            {
+              "stat": "DMG_RESIST",
+              "min": 6,
+              "priority": 3,
+              "note": "Helps survive opening burst"
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "POISON",
+            "attunements": [
+              "ATK",
+              "COOLDOWN",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": [
+            "Fire your skill before the enemy's control lands."
+          ]
+        },
+        {
+          "mode": "WORLD_EXPLORATION",
+          "title": "Raw damage",
+          "summary": "Stages are short; front-load as much ATK as possible.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 5
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 25,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 15,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 10,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "POISON",
+            "attunements": [
+              "ATK",
+              "ELEMENTAL_DMG",
+              "CRIT"
+            ],
+            "note": ""
+          },
+          "notes": []
+        },
+        {
+          "mode": "GUILD_BOSS",
+          "title": "Boss burst",
+          "summary": "Long fight against one target: stack ATK and CRIT, keep enough cooldown for 3+ casts.",
+          "toppings": [
+            {
+              "type": "SEARING_RASPBERRY",
+              "count": 3
+            },
+            {
+              "type": "SWIFT_CHOCOLATE",
+              "count": 2
+            }
+          ],
+          "tart": {
+            "name": "Raspberry Tart",
+            "stat": "ATK",
+            "note": ""
+          },
+          "substats": [
+            {
+              "stat": "ATK",
+              "min": 20,
+              "priority": 1
+            },
+            {
+              "stat": "CRIT",
+              "min": 20,
+              "priority": 2
+            },
+            {
+              "stat": "COOLDOWN",
+              "min": 12,
+              "priority": 3
+            }
+          ],
+          "beascuit": {
+            "grade": "LEGENDARY",
+            "element": "POISON",
+            "attunements": [
+              "ELEMENTAL_DMG",
+              "ATK",
+              "CRIT"
+            ],
+            "note": "Match the boss's weak element when possible."
+          },
+          "notes": []
+        }
+      ]
+    }
+  ]
+}
