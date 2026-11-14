@@ -1,6 +1,11 @@
 package com.crumbcodex.crk.ui.meta
 
 import androidx.compose.foundation.background
+import com.crumbcodex.crk.domain.repository.DataStatus
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material.icons.rounded.CloudSync
+import androidx.compose.material.icons.rounded.Sync
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -97,6 +102,9 @@ fun MetaScreen(onCookieClick: (String) -> Unit) {
     val snackbar = remember { SnackbarHostState() }
     var showAdd by rememberSaveable { mutableStateOf(false) }
     val couponsVm: CouponsViewModel = viewModel(factory = CouponsViewModel.Factory)
+    val dataVm: DataUpdateViewModel = viewModel(factory = DataUpdateViewModel.Factory)
+    val dataStatus by dataVm.status.collectAsStateWithLifecycle()
+    LaunchedEffect(dataVm) { dataVm.messages.collect { snackbar.showSnackbar(it) } }
 
     Scaffold(
         containerColor = Color.Transparent,
@@ -105,7 +113,14 @@ fun MetaScreen(onCookieClick: (String) -> Unit) {
             Column {
                 TopAppBar(
                     title = { Text("Meta & Codes", style = MaterialTheme.typography.headlineSmall) },
-                    actions = { ThemeMenuButton() },
+                    actions = {
+                        if (dataStatus.checking) {
+                            CircularProgressIndicator(Modifier.padding(12.dp).size(24.dp), strokeWidth = 2.dp)
+                        } else {
+                            IconButton(onClick = dataVm::check) { Icon(Icons.Rounded.Sync, "Check for data updates") }
+                        }
+                        ThemeMenuButton()
+                    },
                     colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
                 )
                 PrimaryTabRow(selectedTabIndex = tab, containerColor = Color.Transparent) {
@@ -119,7 +134,7 @@ fun MetaScreen(onCookieClick: (String) -> Unit) {
         },
     ) { padding ->
         Box(Modifier.padding(padding).fillMaxSize()) {
-            if (tab == 0) TierListTab(onCookieClick) else CouponsTab(couponsVm, snackbar)
+            if (tab == 0) TierListTab(onCookieClick, dataStatus, dataVm::check) else CouponsTab(couponsVm, snackbar)
         }
     }
 
@@ -127,7 +142,11 @@ fun MetaScreen(onCookieClick: (String) -> Unit) {
 }
 
 @Composable
-private fun TierListTab(onCookieClick: (String) -> Unit, viewModel: TierListViewModel = viewModel(factory = TierListViewModel.Factory)) {
+private fun TierListTab(
+    onCookieClick: (String) -> Unit,
+    dataStatus: DataStatus,
+    onCheckUpdates: () -> Unit,
+    viewModel: TierListViewModel = viewModel(factory = TierListViewModel.Factory)) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
@@ -146,13 +165,14 @@ private fun TierListTab(onCookieClick: (String) -> Unit, viewModel: TierListView
                 }
             }
         }
+        item { DataStatusCard(dataStatus, onCheckUpdates) }
         item {
             GlassCard(Modifier.fillMaxWidth(), tint = MaterialTheme.colorScheme.tertiary) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(Icons.Rounded.Info, null, tint = MaterialTheme.colorScheme.tertiary)
                     Spacer(Modifier.width(8.dp))
                     Text(
-                        "Community-style snapshot bundled with the app. Rankings shift with every balance patch — update assets/seed/game_data.json to refresh.",
+                        "Editorial snapshot. Rankings shift with every balance patch; new data arrives with the data updates above.",
                         style = MaterialTheme.typography.bodySmall,
                     )
                 }
@@ -358,4 +378,41 @@ private fun AddCouponDialog(onDismiss: () -> Unit, onAdd: (String, String, Strin
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel") } },
     )
+}
+
+@Composable
+private fun DataStatusCard(status: DataStatus, onCheck: () -> Unit) {
+    GlassCard(Modifier.fillMaxWidth()) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(Icons.Rounded.CloudSync, null, tint = MaterialTheme.colorScheme.primary)
+            Spacer(Modifier.width(10.dp))
+            Column(Modifier.weight(1f)) {
+                Text("Game data", style = MaterialTheme.typography.titleSmall)
+                Text(
+                    "Cookies v${status.cookiesVersion ?: "–"} · Tiers & drops v${status.gameDataVersion ?: "–"}",
+                    style = MaterialTheme.typography.bodySmall,
+                )
+                Text(
+                    status.lastCheckedAt?.let { "Last checked ${relativeTime(it)} · checks automatically once a day" }
+                        ?: "Not checked online yet · checks automatically once a day",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            FilledTonalButton(onClick = onCheck, enabled = !status.checking) {
+                Text(if (status.checking) "Checking…" else "Check now")
+            }
+        }
+    }
+}
+
+private fun relativeTime(millis: Long): String {
+    val diff = System.currentTimeMillis() - millis
+    val minutes = TimeUnit.MILLISECONDS.toMinutes(diff)
+    return when {
+        minutes < 1 -> "just now"
+        minutes < 60 -> "$minutes min ago"
+        minutes < 60 * 24 -> "${minutes / 60} h ago"
+        else -> "${minutes / (60 * 24)} d ago"
+    }
 }

@@ -309,10 +309,19 @@ def apply_overrides(cookies):
 
 
 def write(cookies):
-    old_version = json.loads(OUT.read_text())["version"] if OUT.exists() else 0
-    OUT.write_text(json.dumps({"version": old_version + 1, "source": "Cookie Run: Kingdom Wiki (Fandom), CC BY-SA 3.0",
+    """Writes the seed only when the cookie data actually changed, so the version (and the app's
+    update check) moves only on real changes. Prints `changed=true|false` for CI."""
+    existing = json.loads(OUT.read_text()) if OUT.exists() else {"version": 0, "cookies": None}
+    if existing.get("cookies") == cookies:
+        print(f"No changes ({len(cookies)} cookies, version {existing['version']} kept)")
+        print("changed=false")
+        return False
+    version = existing["version"] + 1
+    OUT.write_text(json.dumps({"version": version, "source": "Cookie Run: Kingdom Wiki (Fandom), CC BY-SA 3.0",
                                "cookies": cookies}, indent=2, ensure_ascii=False) + "\n")
-    print(f"Wrote {len(cookies)} cookies to {OUT.relative_to(ROOT)} (version {old_version + 1})")
+    print(f"Wrote {len(cookies)} cookies to {OUT.relative_to(ROOT)} (version {version})")
+    print("changed=true")
+    return True
 
 
 def main():

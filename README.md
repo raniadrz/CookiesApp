@@ -104,6 +104,23 @@ python3 tools/import_wiki.py   # refetches 150+ cookies and bumps the seed versi
   load, the app falls back to its original procedurally drawn mascot. Artwork © Devsisters.
 * Tier lists in `game_data.json` are editorial and need updating each patch. The coupon list ships empty.
 
+## Keeping data up to date
+
+**1. Weekly refresh (GitHub Actions).** `.github/workflows/update-data.yml` runs every Monday, or on demand
+from *Actions → Weekly wiki data refresh → Run workflow*. It runs `tools/import_wiki.py`, and only if the data
+changed does it build, run the tests and open a **"Weekly wiki data refresh"** pull request. The importer bumps
+`version` only on real changes. One-time setup: *Settings → Actions → General → Workflow permissions →* tick
+**Allow GitHub Actions to create and approve pull requests**.
+
+**2. Over-the-air updates in the app.** The app downloads `cookies.json` and `game_data.json` from
+`BuildConfig.SEED_BASE_URL`, so new data needs no new APK. By default that is the `main` branch's raw seed
+folder, and it can be overridden with `-Pcrk.seedBaseUrl=…` or in `gradle.properties`.
+* Checks run automatically at most once a day, and on demand from **Meta → ⟳ / Check now**.
+* Each file is imported only if its `version` is higher than the stored one. The download is validated before
+  anything is written, and user data is never touched.
+* The URL must be **publicly readable**. Raw files of a private repo return 404, and the app then reports
+  "Couldn't reach the data server" and keeps its current data.
+
 ## Continuous integration
 
 `.github/workflows/android.yml` runs on every push and pull request. It checks that the overrides reference real

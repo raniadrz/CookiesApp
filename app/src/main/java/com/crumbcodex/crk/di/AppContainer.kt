@@ -9,11 +9,15 @@ import com.crumbcodex.crk.data.repository.CookieRepositoryImpl
 import com.crumbcodex.crk.data.repository.CouponRepositoryImpl
 import com.crumbcodex.crk.data.repository.GameDataRepositoryImpl
 import com.crumbcodex.crk.data.repository.TeamRepositoryImpl
+import com.crumbcodex.crk.BuildConfig
+import com.crumbcodex.crk.data.seed.DataUpdateManager
 import com.crumbcodex.crk.data.seed.DatabaseSeeder
+import com.crumbcodex.crk.data.seed.RemoteSeedSource
 import com.crumbcodex.crk.data.seed.SeedDataParser
 import com.crumbcodex.crk.domain.repository.CollectionRepository
 import com.crumbcodex.crk.domain.repository.CookieRepository
 import com.crumbcodex.crk.domain.repository.CouponRepository
+import com.crumbcodex.crk.domain.repository.DataUpdateRepository
 import com.crumbcodex.crk.domain.repository.GameDataRepository
 import com.crumbcodex.crk.domain.repository.SeedRepository
 import com.crumbcodex.crk.domain.repository.TeamRepository
@@ -31,8 +35,10 @@ class AppContainer(context: Context) {
 
     val themePreferences by lazy { ThemePreferences(appContext) }
 
-    val seedRepository: SeedRepository by lazy {
-        DatabaseSeeder(appContext, database, SeedDataParser(), mappers)
+    private val seeder: DatabaseSeeder by lazy { DatabaseSeeder(appContext, database, SeedDataParser(), mappers) }
+    val seedRepository: SeedRepository get() = seeder
+    val dataUpdates: DataUpdateRepository by lazy {
+        DataUpdateManager(appContext, seeder, RemoteSeedSource(BuildConfig.SEED_BASE_URL))
     }
     val cookieRepository: CookieRepository by lazy {
         CookieRepositoryImpl(database.cookieDao(), database.collectionDao(), mappers)
