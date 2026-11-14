@@ -18,6 +18,11 @@ android {
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
+        // Folder the app downloads newer cookies.json / game_data.json from (over-the-air data updates).
+        // Must be publicly readable. Override with -Pcrk.seedBaseUrl=https://… or in gradle.properties.
+        val seedBaseUrl = (project.findProperty("crk.seedBaseUrl") as String?)
+            ?: "https://raw.githubusercontent.com/raniadrz/CookiesApp/main/app/src/main/assets/seed/"
+        buildConfigField("String", "SEED_BASE_URL", "\"$seedBaseUrl\"")
     }
 
     buildTypes {

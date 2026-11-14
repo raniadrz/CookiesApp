@@ -46,3 +46,26 @@ interface SeedRepository {
     /** Imports bundled JSON seed data if its version is newer than what is stored. */
     suspend fun ensureSeeded()
 }
+
+/** Outcome of an over-the-air data check. */
+sealed interface UpdateResult {
+    data class Updated(val cookiesVersion: Int?, val gameDataVersion: Int?) : UpdateResult
+    data object UpToDate : UpdateResult
+    data class Failed(val message: String) : UpdateResult
+}
+
+data class DataStatus(
+    val cookiesVersion: Int? = null,
+    val gameDataVersion: Int? = null,
+    val lastCheckedAt: Long? = null,
+    val checking: Boolean = false,
+)
+
+/** Downloads newer seed JSON from the published data URL, so data updates don't need a new APK. */
+interface DataUpdateRepository {
+    val status: kotlinx.coroutines.flow.StateFlow<DataStatus>
+    suspend fun refreshStatus()
+    suspend fun checkForUpdates(): UpdateResult
+    /** Runs [checkForUpdates] if the last check is older than the automatic interval. */
+    suspend fun checkIfDue()
+}

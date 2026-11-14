@@ -48,7 +48,14 @@ class CrkApplication : Application(), ImageLoaderFactory {
         appScope.launch {
             _seedState.value = runCatching { container.seedRepository.ensureSeeded() }
                 .fold(
-                    onSuccess = { SeedState.Ready },
+                    onSuccess = {
+                        // Bundled data is in place; pull newer data over the air at most once a day.
+                        launch {
+                            container.dataUpdates.refreshStatus()
+                            container.dataUpdates.checkIfDue()
+                        }
+                        SeedState.Ready
+                    },
                     onFailure = {
                         Log.e("CrkApplication", "Seeding failed", it)
                         SeedState.Failed(it.message ?: it::class.java.simpleName)

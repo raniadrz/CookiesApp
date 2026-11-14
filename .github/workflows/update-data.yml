@@ -1,0 +1,61 @@
+name: Weekly wiki data refresh
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"   # Mondays 06:17 UTC
+  workflow_dispatch:       # "Run workflow" button in the Actions tab
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: Import wiki data and open a PR if it changed
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Import from the Cookie Run: Kingdom wiki
+        id: import
+        run: |
+          python3 tools/import_wiki.py | tee import.log
+          grep -q '^changed=true' import.log && echo "changed=true" >> "$GITHUB_OUTPUT" || echo "changed=false" >> "$GITHUB_OUTPUT"
+          grep -E '^(Wrote|No changes)' import.log | tail -1 > summary.txt
+
+      - name: Set up JDK 17
+        if: steps.import.outputs.changed == 'true'
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        if: steps.import.outputs.changed == 'true'
+        uses: gradle/actions/setup-gradle@v4
+
+      # PRs opened with GITHUB_TOKEN don't trigger other workflows, so validate here.
+      - name: Validate new data (build + unit tests)
+        if: steps.import.outputs.changed == 'true'
+        run: ./gradlew --no-daemon assembleDebug testDebugUnitTest
+
+      - name: Open pull request
+        if: steps.import.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/wiki-data-refresh
+          delete-branch: true
+          add-paths: app/src/main/assets/seed/cookies.json
+          commit-message: "Refresh cookie data from the CRK wiki"
+          title: "Weekly wiki data refresh"
+          body: |
+            Automated weekly import from the Cookie Run: Kingdom wiki (`tools/import_wiki.py`, overrides applied).
+
+            The build and unit tests (including seed validation) passed in the workflow run before this PR was opened.
+
+            After merging, phones running the app pick up the new data with **Check for data updates** (or the automatic daily check). No new APK is needed.
+          labels: data-refresh
