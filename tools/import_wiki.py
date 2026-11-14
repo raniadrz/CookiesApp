@@ -12,7 +12,8 @@ neutral line and an "Open on wiki" button instead.
 Builds for Arena / World Exploration / Guild Boss are derived from the wiki's recommended toppings and
 stats with mode-specific thresholds — treat them as a starting point and refine by hand.
 
-Usage:  python3 tools/import_wiki.py            (writes the seed file and bumps its version)
+Usage:  python3 tools/import_wiki.py            (fetch from the wiki, apply overrides, bump seed version)
+        python3 tools/import_wiki.py --offline  (re-apply tools/overrides.json to the current seed, no network)
 Wiki text is CC BY-SA 3.0 — keep the attribution in the app and README.
 """
 import json, re, sys, time, hashlib, colorsys, urllib.parse, urllib.request
@@ -23,6 +24,7 @@ WIKI = "https://cookierunkingdom.fandom.com/wiki/"
 UA = "CrumbCodexSeedImporter/1.0 (open-source companion app seed builder)"
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "app/src/main/assets/seed/cookies.json"
+OVERRIDES = ROOT / "tools/overrides.json"
 
 # Cookies whose rarity categories are not exposed as plain categories on the wiki.
 FIXED_TITLES = [
@@ -284,7 +286,39 @@ def convert(title, page):
     }
 
 
+def apply_overrides(cookies):
+    if not OVERRIDES.exists():
+        return cookies
+    overrides = {k: v for k, v in json.loads(OVERRIDES.read_text()).items() if not k.startswith("_")}
+    by_id = {c["id"]: c for c in cookies}
+    for cid, ov in overrides.items():
+        c = by_id.get(cid)
+        if c is None:
+            print(f"  override for unknown cookie '{cid}' ignored", file=sys.stderr); continue
+        for key, value in ov.items():
+            if key == "builds":
+                modes = {b["mode"]: b for b in c.get("builds", [])}
+                for b in value:
+                    modes[b["mode"]] = b
+                order = ["ARENA", "WORLD_EXPLORATION", "GUILD_BOSS"]
+                c["builds"] = sorted(modes.values(), key=lambda b: order.index(b["mode"]))
+            else:
+                c[key] = value
+        print(f"  applied overrides to {cid}")
+    return cookies
+
+
+def write(cookies):
+    old_version = json.loads(OUT.read_text())["version"] if OUT.exists() else 0
+    OUT.write_text(json.dumps({"version": old_version + 1, "source": "Cookie Run: Kingdom Wiki (Fandom), CC BY-SA 3.0",
+                               "cookies": cookies}, indent=2, ensure_ascii=False) + "\n")
+    print(f"Wrote {len(cookies)} cookies to {OUT.relative_to(ROOT)} (version {old_version + 1})")
+
+
 def main():
+    if "--offline" in sys.argv:
+        write(apply_overrides(json.loads(OUT.read_text())["cookies"]))
+        return
     titles = list(FIXED_TITLES)
     for c in CATEGORIES:
         titles += [t for t in category_titles(c) if t not in titles]
@@ -298,10 +332,7 @@ def main():
         c = convert(p["title"], p)
         if c and c["id"] not in seen:
             seen.add(c["id"]); cookies.append(c)
-    old_version = json.loads(OUT.read_text())["version"] if OUT.exists() else 0
-    OUT.write_text(json.dumps({"version": old_version + 1, "source": "Cookie Run: Kingdom Wiki (Fandom), CC BY-SA 3.0",
-                               "cookies": cookies}, indent=2, ensure_ascii=False) + "\n")
-    print(f"Wrote {len(cookies)} cookies to {OUT.relative_to(ROOT)} (version {old_version + 1})")
+    write(apply_overrides(cookies))
 
 
 if __name__ == "__main__":

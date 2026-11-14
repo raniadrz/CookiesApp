@@ -94,12 +94,21 @@ python3 tools/import_wiki.py   # refetches 150+ cookies and bumps the seed versi
   and stat lines, Magic Candy / Crystal Jam availability, wiki page URL and illustration URL.
 * **Not imported:** skill descriptions and other prose, which are the game's own text. Each cookie shows a short
   neutral line and an **Open on wiki** button instead.
+* **Overrides:** `tools/overrides.json` holds hand-tuned corrections (whole fields, or individual builds by
+  `mode`) and is applied after every import. Re-apply it without refetching with
+  `python3 tools/import_wiki.py --offline`.
 * **Builds** for Arena / World Exploration / Guild Boss are derived from the wiki's recommended toppings and
   stats, with general per-mode thresholds. Treat them as a starting point and refine by hand.
 * **Artwork:** official illustrations are *not* in the repo or APK. `imageUrl` points at the wiki CDN
   (`static.wikia.nocookie.net`) and Coil loads the image at runtime into a 150 MB disk cache. If an image can't
   load, the app falls back to its original procedurally drawn mascot. Artwork © Devsisters.
 * Tier lists in `game_data.json` are editorial and need updating each patch. The coupon list ships empty.
+
+## Continuous integration
+
+`.github/workflows/android.yml` runs on every push and pull request. It checks that the overrides reference real
+cookies, builds the debug APK, runs the unit tests (including seed validation), and uploads the APK and test
+reports as downloadable artifacts.
 
 ## Building
 

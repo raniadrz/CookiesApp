@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "source": "Cookie Run: Kingdom Wiki (Fandom), CC BY-SA 3.0",
   "cookies": [
     {
@@ -216,7 +216,7 @@
         {
           "mode": "ARENA",
           "title": "Arena: 5× Swift Chocolate",
-          "summary": "Wiki-recommended sets: Swift Chocolate / Searing Raspberry / Juicy Apple Jelly.",
+          "summary": "Cooldown first so her skill lands before the enemy's. Alternative: 3× Raspberry + 2× Chocolate.",
           "toppings": [
             {
               "type": "SWIFT_CHOCOLATE",
@@ -229,25 +229,20 @@
           },
           "substats": [
             {
-              "stat": "ELEMENTAL_DMG",
-              "min": 10,
-              "priority": 1
-            },
-            {
-              "stat": "DMG_RESIST_BYPASS",
-              "min": 8,
-              "priority": 2
-            },
-            {
               "stat": "COOLDOWN",
-              "min": 25,
-              "priority": 3,
-              "max": 29.5
+              "min": 20,
+              "max": 25,
+              "priority": 1
             },
             {
               "stat": "DMG_RESIST",
               "min": 20,
-              "priority": 4
+              "priority": 2
+            },
+            {
+              "stat": "ATK",
+              "min": 10,
+              "priority": 3
             }
           ],
           "beascuit": {
@@ -255,18 +250,16 @@
             "element": "POISON",
             "attunements": [
               "ELEMENTAL_DMG",
-              "DMG_RESIST_BYPASS",
-              "COOLDOWN"
+              "COOLDOWN",
+              "DMG_RESIST"
             ]
           },
-          "notes": [
-            "Topping sets and stat lines follow the community wiki's recommendation; thresholds are general targets — adjust for your account."
-          ]
+          "notes": []
         },
         {
           "mode": "WORLD_EXPLORATION",
-          "title": "World Exploration",
-          "summary": "Shorter fights — lean into damage where the kit allows.",
+          "title": "PvE: 5× Searing Raspberry",
+          "summary": "Stages end quickly, so stack ATK.",
           "toppings": [
             {
               "type": "SEARING_RASPBERRY",
@@ -279,24 +272,19 @@
           },
           "substats": [
             {
-              "stat": "ELEMENTAL_DMG",
-              "min": 10,
+              "stat": "ATK",
+              "min": 25,
               "priority": 1
-            },
-            {
-              "stat": "DMG_RESIST_BYPASS",
-              "min": 5,
-              "priority": 2
             },
             {
               "stat": "COOLDOWN",
               "min": 15,
-              "priority": 3
+              "priority": 2
             },
             {
               "stat": "DMG_RESIST",
               "min": 15,
-              "priority": 4
+              "priority": 3
             }
           ],
           "beascuit": {
@@ -304,13 +292,11 @@
             "element": "POISON",
             "attunements": [
               "ELEMENTAL_DMG",
-              "DMG_RESIST_BYPASS",
+              "ATK",
               "COOLDOWN"
             ]
           },
-          "notes": [
-            "Topping sets and stat lines follow the community wiki's recommendation; thresholds are general targets — adjust for your account."
-          ]
+          "notes": []
         },
         {
           "mode": "GUILD_BOSS",
@@ -21759,9 +21745,12 @@
       },
       "magicCandy": {
         "kind": "MAGIC_CANDY",
-        "priority": "MEDIUM",
-        "summary": "This cookie has Magic Candy upgrades. See the wiki page for level-by-level effects.",
-        "effects": [],
+        "priority": "HIGH",
+        "summary": "Get it to at least +10 for the extra hits and healing reduction.",
+        "effects": [
+          "Extra hits",
+          "Healing reduction on targets"
+        ],
         "ingredients": [
           "Magic Candy ingredients",
           "Cookie-specific candy fragments",
@@ -21771,33 +21760,35 @@
       "builds": [
         {
           "mode": "ARENA",
-          "title": "Arena: 5× Solid Almond",
-          "summary": "Wiki-recommended sets: Solid Almond / Searing Raspberry / Swift Chocolate.",
+          "title": "Arena: 5× Searing Raspberry",
+          "summary": "All-in damage diver. Alternative: 3× Raspberry + 2× Solid Almond for more survivability.",
           "toppings": [
             {
-              "type": "SOLID_ALMOND",
+              "type": "SEARING_RASPBERRY",
               "count": 5
             }
           ],
           "tart": {
-            "name": "Almond Tart",
-            "stat": "DMG_RESIST"
+            "name": "Raspberry Tart",
+            "stat": "ATK"
           },
           "substats": [
             {
+              "stat": "DMG_RESIST",
+              "min": 25,
+              "max": 30,
+              "priority": 1,
+              "note": "Lets her survive the dive"
+            },
+            {
               "stat": "ATK",
               "min": 12,
-              "priority": 1
+              "priority": 2
             },
             {
               "stat": "COOLDOWN",
-              "min": 25,
-              "priority": 2,
-              "max": 29.5
-            },
-            {
-              "stat": "DMG_RESIST",
-              "min": 20,
+              "min": 6,
+              "max": 10,
               "priority": 3
             }
           ],
@@ -21805,13 +21796,13 @@
             "grade": "LEGENDARY",
             "element": "STEEL",
             "attunements": [
-              "ATK",
-              "COOLDOWN",
+              "ELEMENTAL_DMG",
+              "DMG_RESIST_BYPASS",
               "DMG_RESIST"
             ]
           },
           "notes": [
-            "Topping sets and stat lines follow the community wiki's recommendation; thresholds are general targets — adjust for your account."
+            "Swap to 3× Raspberry + 2× Solid Almond if she dies before her second skill."
           ]
         },
         {

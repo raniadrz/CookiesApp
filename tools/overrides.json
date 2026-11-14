@@ -1,0 +1,61 @@
+{
+  "_comment": "Hand-tuned corrections applied on top of the wiki import. Top-level cookie fields replace the imported value; each entry in 'builds' replaces the imported build with the same 'mode' (other modes are kept). Run: python3 tools/import_wiki.py --offline",
+  "raspberry": {
+    "magicCandy": {
+      "kind": "MAGIC_CANDY",
+      "priority": "HIGH",
+      "summary": "Get it to at least +10 for the extra hits and healing reduction.",
+      "effects": ["Extra hits", "Healing reduction on targets"],
+      "ingredients": ["Magic Candy ingredients", "Cookie-specific candy fragments", "Coins"]
+    },
+    "builds": [
+      {
+        "mode": "ARENA",
+        "title": "Arena: 5× Searing Raspberry",
+        "summary": "All-in damage diver. Alternative: 3× Raspberry + 2× Solid Almond for more survivability.",
+        "toppings": [{ "type": "SEARING_RASPBERRY", "count": 5 }],
+        "tart": { "name": "Raspberry Tart", "stat": "ATK" },
+        "substats": [
+          { "stat": "DMG_RESIST", "min": 25, "max": 30, "priority": 1, "note": "Lets her survive the dive" },
+          { "stat": "ATK", "min": 12, "priority": 2 },
+          { "stat": "COOLDOWN", "min": 6, "max": 10, "priority": 3 }
+        ],
+        "beascuit": { "grade": "LEGENDARY", "element": "STEEL", "attunements": ["ELEMENTAL_DMG", "DMG_RESIST_BYPASS", "DMG_RESIST"] },
+        "notes": ["Swap to 3× Raspberry + 2× Solid Almond if she dies before her second skill."]
+      }
+    ]
+  },
+  "eternal_sugar": {
+    "magicCandy": { "kind": "NONE", "priority": "SKIP", "summary": "", "effects": [], "ingredients": [] },
+    "builds": [
+      {
+        "mode": "ARENA",
+        "title": "Arena: 5× Swift Chocolate",
+        "summary": "Cooldown first so her skill lands before the enemy's. Alternative: 3× Raspberry + 2× Chocolate.",
+        "toppings": [{ "type": "SWIFT_CHOCOLATE", "count": 5 }],
+        "tart": { "name": "Chocolate Tart", "stat": "COOLDOWN" },
+        "substats": [
+          { "stat": "COOLDOWN", "min": 20, "max": 25, "priority": 1 },
+          { "stat": "DMG_RESIST", "min": 20, "priority": 2 },
+          { "stat": "ATK", "min": 10, "priority": 3 }
+        ],
+        "beascuit": { "grade": "LEGENDARY", "element": "POISON", "attunements": ["ELEMENTAL_DMG", "COOLDOWN", "DMG_RESIST"] },
+        "notes": []
+      },
+      {
+        "mode": "WORLD_EXPLORATION",
+        "title": "PvE: 5× Searing Raspberry",
+        "summary": "Stages end quickly, so stack ATK.",
+        "toppings": [{ "type": "SEARING_RASPBERRY", "count": 5 }],
+        "tart": { "name": "Raspberry Tart", "stat": "ATK" },
+        "substats": [
+          { "stat": "ATK", "min": 25, "priority": 1 },
+          { "stat": "COOLDOWN", "min": 15, "priority": 2 },
+          { "stat": "DMG_RESIST", "min": 15, "priority": 3 }
+        ],
+        "beascuit": { "grade": "LEGENDARY", "element": "POISON", "attunements": ["ELEMENTAL_DMG", "ATK", "COOLDOWN"] },
+        "notes": []
+      }
+    ]
+  }
+}
