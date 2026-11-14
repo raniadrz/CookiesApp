@@ -81,16 +81,30 @@ Tier lists, drop sources, treasures and coupon codes live in `game_data.json` (w
 Coupons in the seed use `{ "code": "…", "rewards": "…", "expires": "2026-12-31", "verified": true }`.
 `SeedDataParserTest` checks the bundled files, so a typo in an enum fails the unit tests.
 
-## Data accuracy
+## Data source & artwork
 
-The bundled roster, builds, drop sources and tier lists are **sample data written for this project**. Skill
-names and descriptions are short placeholder summaries, not the in-game text. Class, position and element
-assignments and the meta change with patches, so check them in-game and update the JSON. The coupon list
-ships **empty**: add live codes in the app (+ button) or in `game_data.json`.
+`cookies.json` is generated from the **Cookie Run: Kingdom Wiki** (Fandom, CC BY-SA 3.0) by
+`tools/import_wiki.py`, which uses the wiki's MediaWiki API:
+
+```bash
+python3 tools/import_wiki.py   # refetches 150+ cookies and bumps the seed version
+```
+
+* **Imported (facts only):** rarity, class, position, elements, skill name and cooldown, recommended topping sets
+  and stat lines, Magic Candy / Crystal Jam availability, wiki page URL and illustration URL.
+* **Not imported:** skill descriptions and other prose, which are the game's own text. Each cookie shows a short
+  neutral line and an **Open on wiki** button instead.
+* **Builds** for Arena / World Exploration / Guild Boss are derived from the wiki's recommended toppings and
+  stats, with general per-mode thresholds. Treat them as a starting point and refine by hand.
+* **Artwork:** official illustrations are *not* in the repo or APK. `imageUrl` points at the wiki CDN
+  (`static.wikia.nocookie.net`) and Coil loads the image at runtime into a 150 MB disk cache. If an image can't
+  load, the app falls back to its original procedurally drawn mascot. Artwork © Devsisters.
+* Tier lists in `game_data.json` are editorial and need updating each patch. The coupon list ships empty.
 
 ## Building
 
-Requirements: JDK 17+, Android SDK with platform 35.
+Requirements: JDK 17+, Android SDK with platform 35. `settings.gradle.kts` lists Google's Maven Central
+mirror ahead of `mavenCentral()` to avoid Central rate limits on shared CI hosts.
 
 ```bash
 ./gradlew assembleDebug        # build the APK

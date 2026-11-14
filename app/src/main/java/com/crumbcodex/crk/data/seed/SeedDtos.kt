@@ -12,6 +12,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class CookieSeedFile(
     val version: Int,
+    val source: String? = null,
     val cookies: List<CookieDto>,
 )
 
@@ -26,6 +27,7 @@ data class CookieDto(
     val elements: List<String> = emptyList(),
     val palette: List<String> = listOf("#C9B8FF", "#FFC2D4"),
     val imageUrl: String? = null,
+    val wikiUrl: String? = null,
     val skill: SkillDto,
     val magicCandy: MagicCandyDto = MagicCandyDto(),
     val builds: List<BuildDto> = emptyList(),

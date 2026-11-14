@@ -18,6 +18,7 @@ data class CookieEntity(
     val elements: List<String>,
     val palette: List<String>,
     val imageUrl: String?,
+    val wikiUrl: String?,
     val skillName: String,
     val skillDescription: String,
     val skillCooldown: Int?,

@@ -2,6 +2,10 @@ package com.crumbcodex.crk
 
 import android.app.Application
 import android.util.Log
+import coil.ImageLoader
+import coil.ImageLoaderFactory
+import coil.disk.DiskCache
+import coil.memory.MemoryCache
 import com.crumbcodex.crk.di.AppContainer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +21,7 @@ sealed interface SeedState {
     data class Failed(val message: String) : SeedState
 }
 
-class CrkApplication : Application() {
+class CrkApplication : Application(), ImageLoaderFactory {
     lateinit var container: AppContainer
         private set
 
@@ -30,6 +34,14 @@ class CrkApplication : Application() {
         container = AppContainer(this)
         reseed()
     }
+
+    /** Cookie artwork is fetched at runtime (never bundled) and cached on disk for offline use. */
+    override fun newImageLoader(): ImageLoader = ImageLoader.Builder(this)
+        .memoryCache { MemoryCache.Builder(this).maxSizePercent(0.20).build() }
+        .diskCache { DiskCache.Builder().directory(cacheDir.resolve("cookie_art")).maxSizeBytes(150L * 1024 * 1024).build() }
+        .respectCacheHeaders(false)
+        .crossfade(true)
+        .build()
 
     fun reseed() {
         _seedState.value = SeedState.Loading

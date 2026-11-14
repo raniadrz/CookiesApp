@@ -65,6 +65,7 @@ data class Cookie(
     val magicCandy: MagicCandyInfo,
     val builds: List<Build>,
     val isOwned: Boolean = false,
+    val wikiUrl: String? = null,
 ) {
     fun buildFor(mode: GameMode): Build? = builds.firstOrNull { it.mode == mode }
 }

@@ -72,6 +72,7 @@ class Mappers(private val json: Json) {
         elements = dto.elements,
         palette = dto.palette,
         imageUrl = dto.imageUrl?.takeIf { it.isNotBlank() },
+        wikiUrl = dto.wikiUrl?.takeIf { it.isNotBlank() },
         skillName = dto.skill.name,
         skillDescription = dto.skill.description,
         skillCooldown = dto.skill.cooldown,
@@ -127,6 +128,7 @@ class Mappers(private val json: Json) {
             ),
             builds = entity.builds.map { toDomain(it) }.sortedBy { it.mode.ordinal },
             isOwned = owned,
+            wikiUrl = c.wikiUrl,
         )
     }
 
