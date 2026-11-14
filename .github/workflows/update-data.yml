@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Import from the Cookie Run: Kingdom wiki
+      - name: "Import from the Cookie Run: Kingdom wiki"
         id: import
         run: |
           python3 tools/import_wiki.py | tee import.log
