@@ -172,3 +172,12 @@ mirror ahead of `mavenCentral()` to avoid Central rate limits on shared CI hosts
 Stack: AGP 8.7.3, Kotlin 2.0.21, KSP, Compose BOM 2024.12.01, Material 3 + adaptive navigation suite,
 Navigation Compose 2.8 (type-safe routes), Room 2.6.1, kotlinx.serialization, Coil 2.7 (only for the optional `imageUrl`).
 minSdk 26, targetSdk 35.
+
+## License
+
+The source code is released under the **MIT License**; see [LICENSE](LICENSE).
+
+The seed data in `app/src/main/assets/seed/` comes from the Cookie Run: Kingdom Wiki (Fandom) and is
+**CC BY-SA 3.0**. *Cookie Run: Kingdom*, its characters and artwork are © Devsisters Corp. They are not part of
+this repository and not covered by the MIT License. This is an unofficial fan project.
+
