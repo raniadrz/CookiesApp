@@ -1,0 +1,53 @@
+name: Daily coupon sync
+
+# Pulls active coupon codes from the Cookie Run: Kingdom wiki once a day and commits them to main,
+# so every installed app gets them (with a "New coupon code!" notification) on its next data check.
+on:
+  schedule:
+    - cron: "41 9 * * *"   # every day 09:41 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: coupons
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sync coupon codes from the wiki
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Import active codes
+        id: sync
+        run: |
+          python3 tools/import_wiki_coupons.py | tee sync.log
+          grep -q '^changed=true' sync.log && echo "changed=true" >> "$GITHUB_OUTPUT" || echo "changed=false" >> "$GITHUB_OUTPUT"
+
+      - name: Validate game_data.json
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          python3 - <<'PY'
+          import json, re, datetime as dt
+          d = json.load(open("app/src/main/assets/seed/game_data.json"))
+          codes = [c["code"] for c in d["coupons"]]
+          assert len(codes) == len(set(codes)), "duplicate coupon codes"
+          for c in d["coupons"]:
+              assert re.fullmatch(r"[A-Z0-9]{4,30}", c["code"]), c["code"]
+              if c.get("expires"):
+                  dt.date.fromisoformat(c["expires"])
+          print(f"OK: {len(codes)} coupon(s), version {d['version']}")
+          PY
+
+      - name: Commit and push to main
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Coupons: sync from the CRK wiki"
+          git push origin HEAD:main

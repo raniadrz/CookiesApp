@@ -288,7 +288,8 @@ private fun CouponsTab(viewModel: CouponsViewModel, snackbar: SnackbarHostState)
             item {
                 EmptyState(
                     "No active codes",
-                    "Add codes you find on official socials with the + button — they're saved on your device.",
+                    "New codes are synced from the community wiki every day and arrive here automatically, " +
+                        "with a notification. You can also add one yourself with the + button.",
                     art = { MascotArt() },
                 )
             }
@@ -356,7 +357,7 @@ private fun CouponCard(
                 }
             }
             if (coupon.isVerified) TagPill("Verified", StatusGood, icon = Icons.Rounded.Verified)
-            else TagPill(if (coupon.isUserAdded) "Added by you" else "Unverified", StatusWarn)
+            else TagPill(if (coupon.isUserAdded) "Added by you" else "From wiki · unverified", StatusWarn)
         }
         Spacer(Modifier.height(8.dp))
         Row(verticalAlignment = Alignment.CenterVertically) {

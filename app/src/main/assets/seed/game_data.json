@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "treasures": [
     {
       "id": "squishy_jelly_watch",
@@ -712,5 +712,48 @@
       }
     ]
   },
-  "coupons": []
+  "coupons": [
+    {
+      "code": "TODEARESTFROMIHWAN",
+      "rewards": "3 Soulstone Of Fate Choice Chest, 200 Juicy Stamina Jelly, 3 Butter Amber, 10 Fateful Cookie Cutter, 200 Radiant Beascuit Dough",
+      "expires": null,
+      "verified": false,
+      "source": "wiki"
+    },
+    {
+      "code": "KDHXCRK2026",
+      "rewards": "5 Fateful Cookie Ticket, 3000 Crystal, 1500 Rainbow Cube, 50 Radiant Beascuit Dough, 1 Butter Amber",
+      "expires": null,
+      "verified": false,
+      "source": "wiki"
+    },
+    {
+      "code": "2MSUBSCRIBERSCRK",
+      "rewards": "10000 Crystal, 7000 Rainbow Cube, 3000 Choco Chalk",
+      "expires": null,
+      "verified": false,
+      "source": "wiki"
+    },
+    {
+      "code": "DEVNOW2026THANKU",
+      "rewards": "3000 Crystal, 1500 Rainbow Cube",
+      "expires": null,
+      "verified": false,
+      "source": "wiki"
+    },
+    {
+      "code": "BACK2BASICS2026",
+      "rewards": "3000 Crystal, 1500 Rainbow Cube, 1000 Choco Chalk",
+      "expires": null,
+      "verified": false,
+      "source": "wiki"
+    },
+    {
+      "code": "COOKIERUNXIDUS",
+      "rewards": "500 Crystal",
+      "expires": null,
+      "verified": false,
+      "source": "wiki"
+    }
+  ]
 }
