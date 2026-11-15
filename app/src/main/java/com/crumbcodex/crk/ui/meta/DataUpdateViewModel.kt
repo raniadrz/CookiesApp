@@ -31,6 +31,7 @@ class DataUpdateViewModel(private val repository: DataUpdateRepository) : ViewMo
                         r.gameDataVersion?.let { "game data v$it" },
                     )
                     if (parts.isNotEmpty()) append(": ").append(parts.joinToString(", "))
+                    if (r.newCoupons.isNotEmpty()) append(" · ${r.newCoupons.size} new coupon code(s)!")
                 }
                 UpdateResult.UpToDate -> "Already up to date"
                 is UpdateResult.Failed -> r.message

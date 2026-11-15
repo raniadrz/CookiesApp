@@ -17,6 +17,9 @@ interface CollectionDao {
     @Query("SELECT * FROM owned_cookies WHERE cookieId = :cookieId")
     suspend fun get(cookieId: String): OwnedCookieEntity?
 
+    @Query("SELECT * FROM owned_cookies")
+    suspend fun getAll(): List<OwnedCookieEntity>
+
     @Upsert
     suspend fun upsert(entity: OwnedCookieEntity)
 

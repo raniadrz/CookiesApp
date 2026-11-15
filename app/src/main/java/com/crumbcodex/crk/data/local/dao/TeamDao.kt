@@ -14,6 +14,9 @@ interface TeamDao {
     @Query("SELECT * FROM teams WHERE id = :id")
     fun observe(id: Long): Flow<TeamEntity?>
 
+    @Query("SELECT * FROM teams")
+    suspend fun getAll(): List<TeamEntity>
+
     /** Returns the new row id on insert, or -1 when an existing row was updated. */
     @Upsert
     suspend fun upsert(team: TeamEntity): Long

@@ -21,6 +21,8 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material.icons.rounded.AutoAwesome
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -58,6 +60,7 @@ import com.crumbcodex.crk.ui.util.icon
 fun TeamListScreen(
     onOpenTeam: (Long) -> Unit,
     onNewTeam: (GameMode) -> Unit,
+    onSuggestTeam: (GameMode) -> Unit,
     viewModel: TeamListViewModel = viewModel(factory = TeamListViewModel.Factory),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -75,14 +78,23 @@ fun TeamListScreen(
         floatingActionButton = {
             Box {
                 ExtendedFloatingActionButton(
-                    onClick = { state.modeFilter?.let(onNewTeam) ?: run { newMenu = true } },
+                    onClick = { newMenu = true },
                     icon = { Icon(Icons.Rounded.Add, null) },
                     text = { Text("New team") },
                 )
                 DropdownMenu(expanded = newMenu, onDismissRequest = { newMenu = false }) {
-                    GameMode.entries.forEach { m ->
+                    val modes = state.modeFilter?.let { listOf(it) } ?: GameMode.entries
+                    modes.forEach { m ->
                         DropdownMenuItem(
-                            text = { Text(m.label) },
+                            text = { Text("✨ Suggest ${m.shortLabel} team") },
+                            leadingIcon = { Icon(Icons.Rounded.AutoAwesome, null) },
+                            onClick = { newMenu = false; onSuggestTeam(m) },
+                        )
+                    }
+                    HorizontalDivider()
+                    modes.forEach { m ->
+                        DropdownMenuItem(
+                            text = { Text("Empty ${m.label} team") },
                             leadingIcon = { Icon(m.icon, null) },
                             onClick = { newMenu = false; onNewTeam(m) },
                         )

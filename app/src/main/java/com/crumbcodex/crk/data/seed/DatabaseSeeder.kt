@@ -19,6 +19,8 @@ data class SyncOutcome(
     val importedGameData: Boolean,
     val cookiesVersion: Int,
     val gameDataVersion: Int,
+    /** Codes of coupons that were not on this device before this import (and are not expired). */
+    val newCoupons: List<String> = emptyList(),
 )
 
 /**
@@ -59,6 +61,7 @@ class DatabaseSeeder(
             if (plan.isNoop) return@withContext outcome
 
             val now = clock()
+            var newCoupons = emptyList<String>()
             db.withTransaction {
                 if (plan.importCookies) {
                     cookieDao.clearBuilds()
@@ -79,6 +82,11 @@ class DatabaseSeeder(
                             }
                         },
                     )
+                    val known = db.couponDao().allCodes().toSet()
+                    newCoupons = gameFile.coupons
+                        .filter { c -> c.code.trim().uppercase() !in known }
+                        .filter { c -> c.expires == null || SeedDataParser.parseExpiry(c.expires) >= now }
+                        .map { it.code.trim().uppercase() }
                     db.couponDao().insertIfAbsent(
                         gameFile.coupons.map {
                             CouponEntity(
@@ -95,7 +103,7 @@ class DatabaseSeeder(
                     dao.setSeedVersion(SeedMetaEntity(KEY_GAME_DATA, gameFile.version))
                 }
             }
-            outcome
+            outcome.copy(newCoupons = newCoupons)
         }
     }
 

@@ -1,6 +1,14 @@
 package com.crumbcodex.crk.ui.team
 
 import androidx.activity.compose.BackHandler
+import com.crumbcodex.crk.domain.usecase.TeamSuggestion
+import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarHost
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -99,12 +107,16 @@ fun TeamEditorScreen(
     initialMode: GameMode,
     onBack: () -> Unit,
     onOpenCookie: (String) -> Unit,
+    autoSuggest: Boolean = false,
 ) {
     val viewModel: TeamEditorViewModel = viewModel(
-        key = "team-$teamId-$initialMode",
-        factory = TeamEditorViewModel.factory(teamId, initialMode),
+        key = "team-$teamId-$initialMode-$autoSuggest",
+        factory = TeamEditorViewModel.factory(teamId, initialMode, autoSuggest),
     )
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val snackbar = remember { SnackbarHostState() }
+    var autoMenu by remember { mutableStateOf(false) }
+    LaunchedEffect(viewModel) { viewModel.messages.collect { snackbar.showSnackbar(it) } }
     var pickerSlot by rememberSaveable { mutableStateOf<Int?>(null) }
     var confirmDelete by rememberSaveable { mutableStateOf(false) }
     var confirmDiscard by rememberSaveable { mutableStateOf(false) }
@@ -113,6 +125,7 @@ fun TeamEditorScreen(
 
     Scaffold(
         containerColor = Color.Transparent,
+        snackbarHost = { SnackbarHost(snackbar) },
         topBar = {
             TopAppBar(
                 title = { Text(if (state.isNew) "New team" else "Edit team") },
@@ -122,6 +135,25 @@ fun TeamEditorScreen(
                     }
                 },
                 actions = {
+                    Box {
+                        if (state.suggesting) {
+                            CircularProgressIndicator(Modifier.padding(12.dp).size(24.dp), strokeWidth = 2.dp)
+                        } else {
+                            IconButton(onClick = { autoMenu = true }) { Icon(Icons.Rounded.AutoAwesome, "Auto-build team") }
+                        }
+                        DropdownMenu(expanded = autoMenu, onDismissRequest = { autoMenu = false }) {
+                            DropdownMenuItem(
+                                text = { Text("Auto-build from my cookies") },
+                                leadingIcon = { Icon(Icons.Rounded.Favorite, null) },
+                                onClick = { autoMenu = false; viewModel.autoBuild(ownedOnly = true) },
+                            )
+                            DropdownMenuItem(
+                                text = { Text("Auto-build from any cookie") },
+                                leadingIcon = { Icon(Icons.Rounded.AutoAwesome, null) },
+                                onClick = { autoMenu = false; viewModel.autoBuild(ownedOnly = false) },
+                            )
+                        }
+                    }
                     if (!state.isNew) IconButton(onClick = { confirmDelete = true }) { Icon(Icons.Rounded.Delete, "Delete team") }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
@@ -174,6 +206,7 @@ fun TeamEditorScreen(
                     onOpenCookie = onOpenCookie,
                 )
             }
+            state.lastSuggestion?.let { s -> item { SuggestionCard(s) } }
             item { FormationCard(state.members) }
             state.synergy?.let { syn ->
                 item { SynergyCard(syn) }
@@ -462,6 +495,28 @@ private fun CookiePickerSheet(
                             color = if (c.id in inTeam) MaterialTheme.colorScheme.primary else c.position.color,
                         )
                     }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun SuggestionCard(suggestion: TeamSuggestion) {
+    GlassCard(Modifier.fillMaxWidth(), tint = MaterialTheme.colorScheme.tertiary) {
+        SectionHeader(
+            "Why this lineup",
+            icon = Icons.Rounded.AutoAwesome,
+            subtitle = if (suggestion.usedUnowned) "Includes cookies you don't own yet" else "Built from your collection",
+        )
+        Spacer(Modifier.height(8.dp))
+        suggestion.members.forEach { m ->
+            Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+                CookieAvatar(m.cookie, size = 36.dp, showElement = false)
+                Spacer(Modifier.width(10.dp))
+                Column(Modifier.weight(1f)) {
+                    Text(m.cookie.name, style = MaterialTheme.typography.titleSmall)
+                    Text(m.reason, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
         }

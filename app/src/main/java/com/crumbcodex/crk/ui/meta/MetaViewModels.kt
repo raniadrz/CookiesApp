@@ -2,6 +2,7 @@ package com.crumbcodex.crk.ui.meta
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.crumbcodex.crk.data.seed.CouponNotifier
 import com.crumbcodex.crk.domain.model.Coupon
 import com.crumbcodex.crk.domain.model.GameMode
 import com.crumbcodex.crk.domain.model.TierEntry
@@ -59,8 +60,13 @@ data class CouponsUiState(
 
 class CouponsViewModel(
     private val repository: CouponRepository,
+    private val notifier: CouponNotifier,
     private val clock: () -> Long = System::currentTimeMillis,
 ) : ViewModel() {
+
+    val notificationsEnabled: StateFlow<Boolean> = notifier.enabled
+    fun setNotificationsEnabled(on: Boolean) = notifier.setEnabled(on)
+    fun hasNotificationPermission(): Boolean = notifier.hasSystemPermission()
 
     private val showExpired = MutableStateFlow(false)
 
@@ -90,6 +96,6 @@ class CouponsViewModel(
 
     companion object {
         const val REDEEM_URL = "https://game.devplay.com/coupon/ck/en"
-        val Factory = containerFactory { CouponsViewModel(it.couponRepository) }
+        val Factory = containerFactory { CouponsViewModel(it.couponRepository, it.couponNotifier) }
     }
 }

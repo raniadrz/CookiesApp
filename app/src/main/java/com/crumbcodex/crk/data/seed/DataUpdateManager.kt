@@ -19,6 +19,7 @@ class DataUpdateManager(
     context: Context,
     private val seeder: DatabaseSeeder,
     private val remote: RemoteSeedSource,
+    private val notifier: CouponNotifier,
     private val clock: () -> Long = System::currentTimeMillis,
 ) : DataUpdateRepository {
 
@@ -44,10 +45,12 @@ class DataUpdateManager(
             prefs.edit().putLong(KEY_LAST_CHECK, now).apply()
             _status.update { it.copy(lastCheckedAt = now) }
             refreshStatus()
+            if (outcome.newCoupons.isNotEmpty()) notifier.notifyNewCoupons(outcome.newCoupons)
             if (outcome.importedCookies || outcome.importedGameData) {
                 UpdateResult.Updated(
                     cookiesVersion = outcome.cookiesVersion.takeIf { outcome.importedCookies },
                     gameDataVersion = outcome.gameDataVersion.takeIf { outcome.importedGameData },
+                    newCoupons = outcome.newCoupons,
                 )
             } else {
                 UpdateResult.UpToDate
