@@ -1,5 +1,19 @@
 package com.crumbcodex.crk.ui.collection
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.material.icons.rounded.MoreVert
+import androidx.compose.material.icons.rounded.Upload
+import androidx.compose.material.icons.rounded.Download
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.foundation.layout.size
+import java.time.LocalDate
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -61,10 +75,23 @@ fun CollectionScreen(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     var sortOpen by rememberSaveable { mutableStateOf(false) }
+    var moreOpen by remember { mutableStateOf(false) }
+    val backupVm: BackupViewModel = viewModel(factory = BackupViewModel.Factory)
+    val backupBusy by backupVm.busy.collectAsStateWithLifecycle()
+    val snackbar = remember { SnackbarHostState() }
+    val resolver = LocalContext.current.contentResolver
+    LaunchedEffect(backupVm) { backupVm.messages.collect { snackbar.showSnackbar(it) } }
+    val exportLauncher = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri ->
+        if (uri != null) backupVm.export(resolver, uri)
+    }
+    val importLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri != null) backupVm.import(resolver, uri)
+    }
     val nf = NumberFormat.getIntegerInstance()
 
     Scaffold(
         containerColor = Color.Transparent,
+        snackbarHost = { SnackbarHost(snackbar) },
         topBar = {
             TopAppBar(
                 title = { Text("My Collection", style = MaterialTheme.typography.headlineSmall) },
@@ -82,6 +109,31 @@ fun CollectionScreen(
                         }
                     }
                     ThemeMenuButton()
+                    Box {
+                        if (backupBusy) {
+                            CircularProgressIndicator(Modifier.padding(12.dp).size(24.dp), strokeWidth = 2.dp)
+                        } else {
+                            IconButton(onClick = { moreOpen = true }) { Icon(Icons.Rounded.MoreVert, "Backup options") }
+                        }
+                        DropdownMenu(expanded = moreOpen, onDismissRequest = { moreOpen = false }) {
+                            DropdownMenuItem(
+                                text = { Text("Export backup") },
+                                leadingIcon = { Icon(Icons.Rounded.Upload, null) },
+                                onClick = {
+                                    moreOpen = false
+                                    exportLauncher.launch("crumb-codex-backup-${LocalDate.now()}.json")
+                                },
+                            )
+                            DropdownMenuItem(
+                                text = { Text("Import backup") },
+                                leadingIcon = { Icon(Icons.Rounded.Download, null) },
+                                onClick = {
+                                    moreOpen = false
+                                    importLauncher.launch(arrayOf("application/json", "text/plain", "application/octet-stream"))
+                                },
+                            )
+                        }
+                    }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
             )
@@ -91,7 +143,8 @@ fun CollectionScreen(
             Box(Modifier.padding(padding).fillMaxSize(), contentAlignment = Alignment.Center) {
                 EmptyState(
                     title = "Your jar is empty",
-                    message = "Tap the heart on any cookie in the Cookie-Dex to start tracking levels, toppings and Beascuits.",
+                    message = "Tap the heart on any cookie in the Cookie-Dex to start tracking levels, toppings and Beascuits. " +
+                        "Moving from another phone? Use ⋮ → Import backup.",
                     art = { MascotArt() },
                     actionLabel = "Browse Cookie-Dex",
                     onAction = onBrowse,

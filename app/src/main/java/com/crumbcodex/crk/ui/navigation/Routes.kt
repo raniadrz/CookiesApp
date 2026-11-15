@@ -15,7 +15,7 @@ import kotlin.reflect.KClass
 @Serializable data object CollectionRoute
 @Serializable data class OwnedEditorRoute(val cookieId: String)
 @Serializable data object TeamsRoute
-@Serializable data class TeamEditorRoute(val teamId: Long = 0L, val mode: String = "ARENA")
+@Serializable data class TeamEditorRoute(val teamId: Long = 0L, val mode: String = "ARENA", val suggest: Boolean = false)
 @Serializable data object FarmingRoute
 @Serializable data object MetaRoute
 

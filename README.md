@@ -121,6 +121,34 @@ folder, and it can be overridden with `-Pcrk.seedBaseUrl=…` or in `gradle.prop
 * The URL must be **publicly readable**. Raw files of a private repo return 404, and the app then reports
   "Couldn't reach the data server" and keeps its current data.
 
+## Coupon codes
+
+Add a code from **Actions → Add coupon code → Run workflow**, which also works in the GitHub mobile app. The
+workflow runs `tools/add_coupon.py`, validates the code and the expiry date (YYYY-MM-DD), bumps
+`game_data.json`'s version and pushes to `main`. Codes that expired more than 30 days ago are pruned.
+
+Phones pick up new codes on their next data check, from a daily background job (WorkManager) or when the app
+opens, and show a **"New coupon code!"** notification. Tapping it opens Meta → Coupons. The notification can be
+switched off in the Coupons tab; on Android 13+ the app asks for notification permission there.
+
+Locally: `python3 tools/add_coupon.py ADD CODE --rewards "300 Crystals" --expires 2026-12-31`
+(or `REMOVE CODE`).
+
+## Backup & restore
+
+**Collection → ⋮ → Export backup** saves the collection, teams, user-added coupons and redeemed marks as one
+JSON file, wherever Android's file picker allows (Drive, Downloads…). **Import backup** merges a file back in.
+Cookie entries take the backup's values, teams are added unless an identical one exists, and nothing is
+deleted. Invalid files are rejected before anything is written.
+
+## Team suggestions
+
+**Teams → New team → ✨ Suggest … team**, or the ✨ button inside any team, builds the strongest lineup for
+that mode. It ranks cookies by their tier in that mode and by your recorded power and level, keeps the lineup
+valid (frontline, a healer for PvE and Arena, at most two Front cookies), then improves the combined tier value
+plus synergy score one swap at a time. It shows a short reason per pick. With fewer than 5 owned cookies it
+fills from the full roster and says so.
+
 ## Continuous integration
 
 `.github/workflows/android.yml` runs on every push and pull request. It checks that the overrides reference real

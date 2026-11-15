@@ -49,7 +49,7 @@ interface SeedRepository {
 
 /** Outcome of an over-the-air data check. */
 sealed interface UpdateResult {
-    data class Updated(val cookiesVersion: Int?, val gameDataVersion: Int?) : UpdateResult
+    data class Updated(val cookiesVersion: Int?, val gameDataVersion: Int?, val newCoupons: List<String> = emptyList()) : UpdateResult
     data object UpToDate : UpdateResult
     data class Failed(val message: String) : UpdateResult
 }
@@ -68,4 +68,13 @@ interface DataUpdateRepository {
     suspend fun checkForUpdates(): UpdateResult
     /** Runs [checkForUpdates] if the last check is older than the automatic interval. */
     suspend fun checkIfDue()
+}
+
+data class ImportSummary(val cookies: Int, val teamsAdded: Int, val teamsSkipped: Int, val coupons: Int)
+
+/** Export / import of all user data (collection, teams, user coupons and redeemed marks). */
+interface BackupRepository {
+    suspend fun exportJson(): String
+    /** Merges a backup into the current data; never deletes anything. */
+    suspend fun importJson(raw: String): ImportSummary
 }

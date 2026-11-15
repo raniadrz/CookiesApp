@@ -3,6 +3,8 @@
 
     <!-- Only used when a seed entry provides an optional imageUrl for custom artwork. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- "New coupon codes" notifications (asked for at runtime on Android 13+). -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:name=".CrkApplication"

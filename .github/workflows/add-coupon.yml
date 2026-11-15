@@ -1,0 +1,60 @@
+name: Add coupon code
+
+# Run from the Actions tab (also works in the GitHub mobile app): Actions → Add coupon code → Run workflow.
+on:
+  workflow_dispatch:
+    inputs:
+      code:
+        description: "Coupon code"
+        required: true
+        type: string
+      rewards:
+        description: "Rewards (optional), e.g. 300 Crystals"
+        required: false
+        type: string
+      expires:
+        description: "Last valid day, YYYY-MM-DD (optional)"
+        required: false
+        type: string
+      action:
+        description: "Add or remove"
+        required: true
+        type: choice
+        default: ADD
+        options: [ADD, REMOVE]
+
+concurrency:
+  group: coupons
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: Update game_data.json
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      # Inputs go through env vars, never pasted into the script, so a code can't inject shell commands.
+      - name: Apply coupon change
+        env:
+          ACTION: ${{ inputs.action }}
+          CODE: ${{ inputs.code }}
+          REWARDS: ${{ inputs.rewards }}
+          EXPIRES: ${{ inputs.expires }}
+        run: python3 tools/add_coupon.py "$ACTION" "$CODE" --rewards "$REWARDS" --expires "$EXPIRES"
+
+      - name: Commit and push to main
+        env:
+          ACTION: ${{ inputs.action }}
+          CODE: ${{ inputs.code }}
+        run: |
+          if git diff --quiet; then echo "Nothing changed"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Coupon: ${ACTION,,} ${CODE^^}"
+          git push origin HEAD:main

@@ -6,6 +6,7 @@ import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import androidx.room.Relation
+import kotlinx.serialization.Serializable
 
 @Entity(tableName = "cookies")
 data class CookieEntity(
@@ -58,6 +59,7 @@ data class CookieWithBuilds(
 )
 
 /** User data — intentionally no FK so it survives seed refreshes. */
+@Serializable
 @Entity(tableName = "owned_cookies")
 data class OwnedCookieEntity(
     @PrimaryKey val cookieId: String,
@@ -77,6 +79,7 @@ data class OwnedCookieEntity(
     val updatedAt: Long,
 )
 
+@Serializable
 @Entity(tableName = "teams")
 data class TeamEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
@@ -117,6 +120,7 @@ data class TierEntryEntity(
     val note: String,
 )
 
+@Serializable
 @Entity(tableName = "coupons")
 data class CouponEntity(
     @PrimaryKey val code: String,

@@ -17,6 +17,7 @@ import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteDefaults
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -46,12 +47,20 @@ import com.crumbcodex.crk.ui.team.TeamEditorScreen
 import com.crumbcodex.crk.ui.team.TeamListScreen
 
 @Composable
-fun CrkApp(seedState: SeedState, onRetrySeed: () -> Unit) {
+fun CrkApp(
+    seedState: SeedState,
+    onRetrySeed: () -> Unit,
+    openCoupons: Boolean = false,
+    onOpenCouponsHandled: () -> Unit = {},
+) {
     val navController = rememberNavController()
     val backStack by navController.currentBackStackEntryAsState()
     val destination = backStack?.destination
     val adaptiveInfo = currentWindowAdaptiveInfo()
     val expanded = adaptiveInfo.windowSizeClass.windowWidthSizeClass == WindowWidthSizeClass.EXPANDED
+    LaunchedEffect(openCoupons) {
+        if (openCoupons) navController.navigateTopLevel(TopLevelDestination.META)
+    }
 
     AppBackground {
         NavigationSuiteScaffold(
@@ -113,6 +122,7 @@ fun CrkApp(seedState: SeedState, onRetrySeed: () -> Unit) {
                         TeamListScreen(
                             onOpenTeam = { navController.navigate(TeamEditorRoute(teamId = it)) },
                             onNewTeam = { mode -> navController.navigate(TeamEditorRoute(teamId = 0L, mode = mode.name)) },
+                            onSuggestTeam = { mode -> navController.navigate(TeamEditorRoute(teamId = 0L, mode = mode.name, suggest = true)) },
                         )
                     }
                     composable<TeamEditorRoute> { entry ->
@@ -120,13 +130,18 @@ fun CrkApp(seedState: SeedState, onRetrySeed: () -> Unit) {
                         TeamEditorScreen(
                             teamId = route.teamId,
                             initialMode = runCatching { GameMode.valueOf(route.mode) }.getOrDefault(GameMode.ARENA),
+                            autoSuggest = route.suggest,
                             onBack = { navController.popBackStack() },
                             onOpenCookie = { navController.navigate(CookieDetailRoute(it)) },
                         )
                     }
                     composable<FarmingRoute> { FarmingScreen() }
                     composable<MetaRoute> {
-                        MetaScreen(onCookieClick = { navController.navigate(CookieDetailRoute(it)) })
+                        MetaScreen(
+                            onCookieClick = { navController.navigate(CookieDetailRoute(it)) },
+                            showCoupons = openCoupons,
+                            onShowCouponsHandled = onOpenCouponsHandled,
+                        )
                     }
                 }
             }

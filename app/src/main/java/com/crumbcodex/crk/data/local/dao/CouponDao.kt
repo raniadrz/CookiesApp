@@ -12,6 +12,12 @@ interface CouponDao {
     @Query("SELECT * FROM coupons ORDER BY redeemed ASC, (expiresAt IS NULL) ASC, expiresAt ASC, addedAt DESC")
     fun observeAll(): Flow<List<CouponEntity>>
 
+    @Query("SELECT * FROM coupons")
+    suspend fun getAll(): List<CouponEntity>
+
+    @Query("SELECT code FROM coupons")
+    suspend fun allCodes(): List<String>
+
     /** Seed coupons never overwrite a user's own changes. */
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertIfAbsent(items: List<CouponEntity>)

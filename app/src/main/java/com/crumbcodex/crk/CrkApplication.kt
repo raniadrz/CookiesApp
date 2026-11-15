@@ -6,6 +6,7 @@ import coil.ImageLoader
 import coil.ImageLoaderFactory
 import coil.disk.DiskCache
 import coil.memory.MemoryCache
+import com.crumbcodex.crk.data.seed.DataUpdateWorker
 import com.crumbcodex.crk.di.AppContainer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,6 +34,7 @@ class CrkApplication : Application(), ImageLoaderFactory {
         super.onCreate()
         container = AppContainer(this)
         reseed()
+        DataUpdateWorker.schedule(this)
     }
 
     /** Cookie artwork is fetched at runtime (never bundled) and cached on disk for offline use. */

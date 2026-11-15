@@ -7,13 +7,18 @@ import com.crumbcodex.crk.domain.model.Cookie
 import com.crumbcodex.crk.domain.model.GameMode
 import com.crumbcodex.crk.domain.model.Team
 import com.crumbcodex.crk.domain.model.Treasure
+import com.crumbcodex.crk.domain.repository.CollectionRepository
 import com.crumbcodex.crk.domain.repository.CookieRepository
 import com.crumbcodex.crk.domain.repository.GameDataRepository
 import com.crumbcodex.crk.domain.repository.TeamRepository
+import com.crumbcodex.crk.domain.usecase.SuggestTeamUseCase
+import com.crumbcodex.crk.domain.usecase.TeamSuggestion
 import com.crumbcodex.crk.domain.usecase.TeamSynergy
 import com.crumbcodex.crk.domain.usecase.TeamSynergyCalculator
 import com.crumbcodex.crk.ui.util.containerFactory
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
@@ -29,6 +34,8 @@ data class TeamEditorUiState(
     val synergy: TeamSynergy? = null,
     val dirty: Boolean = false,
     val saved: Boolean = false,
+    val suggesting: Boolean = false,
+    val lastSuggestion: TeamSuggestion? = null,
 ) {
     private val byId get() = cookies.associateBy { it.id }
     val members: List<Cookie?> get() = team.slots.map { id -> id?.let { byId[it] } }
@@ -40,9 +47,15 @@ class TeamEditorViewModel(
     initialMode: GameMode,
     private val teamRepository: TeamRepository,
     cookieRepository: CookieRepository,
-    gameDataRepository: GameDataRepository,
+    private val gameDataRepository: GameDataRepository,
     private val calculator: TeamSynergyCalculator,
+    private val collectionRepository: CollectionRepository,
+    private val suggestTeam: SuggestTeamUseCase,
+    autoSuggest: Boolean = false,
 ) : ViewModel() {
+
+    private val _messages = Channel<String>(Channel.BUFFERED)
+    val messages = _messages.receiveAsFlow()
 
     private val _state = MutableStateFlow(TeamEditorUiState(team = Team.empty(initialMode)))
     val state: StateFlow<TeamEditorUiState> = _state.asStateFlow()
@@ -54,8 +67,46 @@ class TeamEditorViewModel(
             }
             combine(cookieRepository.observeCookies(), gameDataRepository.observeTreasures()) { c, t -> c to t }
                 .collect { (cookies, treasures) ->
+                    val first = _state.value.loading
                     _state.update { it.copy(loading = false, cookies = cookies, treasures = treasures).recompute() }
+                    if (first && autoSuggest && teamId == 0L) autoBuild(ownedOnly = true)
                 }
+        }
+    }
+
+    /**
+     * Fills all 5 slots with the strongest lineup for the current mode, built from the user's collection
+     * ([ownedOnly]) or from every cookie. Picks treasures for the new lineup too.
+     */
+    fun autoBuild(ownedOnly: Boolean) {
+        val current = _state.value
+        if (current.cookies.isEmpty() || current.suggesting) return
+        _state.update { it.copy(suggesting = true) }
+        viewModelScope.launch {
+            val mode = current.team.mode
+            val owned = collectionRepository.observeOwned().first()
+            val tiers = gameDataRepository.observeTierList(mode).first()
+            val suggestion = suggestTeam(mode, current.cookies, owned, tiers, current.treasures, ownedOnly)
+            if (suggestion == null) {
+                _state.update { it.copy(suggesting = false) }
+                _messages.send("Not enough cookies to build a team")
+                return@launch
+            }
+            editTeam { t ->
+                t.copy(
+                    slots = suggestion.members.map { it.cookie.id },
+                    treasureIds = suggestion.synergy.recommendedTreasures.map { it.id }.take(Team.MAX_TREASURES),
+                    name = t.name.ifBlank { "Suggested ${mode.shortLabel} team" },
+                )
+            }
+            _state.update { it.copy(suggesting = false, lastSuggestion = suggestion) }
+            _messages.send(
+                when {
+                    !suggestion.usedUnowned -> "Built from your collection · synergy ${suggestion.synergy.score}"
+                    owned.isEmpty() -> "Your collection is empty, so this uses any cookie · synergy ${suggestion.synergy.score}"
+                    else -> "You own fewer than 5 suitable cookies, so some slots use cookies you don't have"
+                },
+            )
         }
     }
 
@@ -122,8 +173,11 @@ class TeamEditorViewModel(
     }
 
     companion object {
-        fun factory(teamId: Long, mode: GameMode): ViewModelProvider.Factory = containerFactory {
-            TeamEditorViewModel(teamId, mode, it.teamRepository, it.cookieRepository, it.gameDataRepository, it.teamSynergy)
+        fun factory(teamId: Long, mode: GameMode, autoSuggest: Boolean = false): ViewModelProvider.Factory = containerFactory {
+            TeamEditorViewModel(
+                teamId, mode, it.teamRepository, it.cookieRepository, it.gameDataRepository, it.teamSynergy,
+                it.collectionRepository, it.suggestTeam, autoSuggest,
+            )
         }
     }
 }

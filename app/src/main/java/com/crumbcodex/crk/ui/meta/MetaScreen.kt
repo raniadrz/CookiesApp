@@ -1,5 +1,11 @@
 package com.crumbcodex.crk.ui.meta
 
+import android.Manifest
+import android.os.Build
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.material.icons.rounded.NotificationsActive
+import androidx.compose.material3.Switch
 import androidx.compose.foundation.background
 import com.crumbcodex.crk.domain.repository.DataStatus
 import androidx.compose.runtime.LaunchedEffect
@@ -97,8 +103,15 @@ import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
 
 @Composable
-fun MetaScreen(onCookieClick: (String) -> Unit) {
+fun MetaScreen(
+    onCookieClick: (String) -> Unit,
+    showCoupons: Boolean = false,
+    onShowCouponsHandled: () -> Unit = {},
+) {
     var tab by rememberSaveable { mutableIntStateOf(0) }
+    LaunchedEffect(showCoupons) {
+        if (showCoupons) { tab = 1; onShowCouponsHandled() }
+    }
     val snackbar = remember { SnackbarHostState() }
     var showAdd by rememberSaveable { mutableStateOf(false) }
     val couponsVm: CouponsViewModel = viewModel(factory = CouponsViewModel.Factory)
@@ -257,6 +270,8 @@ private fun CouponsTab(viewModel: CouponsViewModel, snackbar: SnackbarHostState)
                     Spacer(Modifier.width(6.dp))
                     Text("Open redemption page")
                 }
+                Spacer(Modifier.height(6.dp))
+                CouponNotificationToggle(viewModel)
             }
         }
         item {
@@ -414,5 +429,39 @@ private fun relativeTime(millis: Long): String {
         minutes < 60 -> "$minutes min ago"
         minutes < 60 * 24 -> "${minutes / 60} h ago"
         else -> "${minutes / (60 * 24)} d ago"
+    }
+}
+
+@Composable
+private fun CouponNotificationToggle(viewModel: CouponsViewModel) {
+    val enabled by viewModel.notificationsEnabled.collectAsStateWithLifecycle()
+    var permissionDenied by remember { mutableStateOf(false) }
+    val permissionLauncher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+        viewModel.setNotificationsEnabled(granted)
+        permissionDenied = !granted
+    }
+    val active = enabled && viewModel.hasNotificationPermission()
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Icon(Icons.Rounded.NotificationsActive, null, tint = MaterialTheme.colorScheme.secondary)
+        Spacer(Modifier.width(8.dp))
+        Column(Modifier.weight(1f)) {
+            Text("Notify me about new codes", style = MaterialTheme.typography.titleSmall)
+            Text(
+                if (permissionDenied) "Notifications are blocked. Allow them in Android settings → Apps → Crumb Codex."
+                else "Checked automatically once a day, even when the app is closed.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+        Switch(
+            checked = active,
+            onCheckedChange = { on ->
+                if (on && !viewModel.hasNotificationPermission() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                } else {
+                    viewModel.setNotificationsEnabled(on)
+                }
+            },
+        )
     }
 }
