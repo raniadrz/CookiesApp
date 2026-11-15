@@ -127,6 +127,10 @@ Add a code from **Actions → Add coupon code → Run workflow**, which also wor
 workflow runs `tools/add_coupon.py`, validates the code and the expiry date (YYYY-MM-DD), bumps
 `game_data.json`'s version and pushes to `main`. Codes that expired more than 30 days ago are pruned.
 
+**Automatic:** `.github/workflows/sync-coupons.yml` runs daily (09:41 UTC). `tools/import_wiki_coupons.py`
+reads the *Active Codes* table of the wiki's Coupon Codes page, adds new codes (marked `"source": "wiki"`,
+unverified, no expiry) and removes wiki codes that left the active list. Hand-added codes are never touched.
+
 Phones pick up new codes on their next data check, from a daily background job (WorkManager) or when the app
 opens, and show a **"New coupon code!"** notification. Tapping it opens Meta → Coupons. The notification can be
 switched off in the Coupons tab; on Android 13+ the app asks for notification permission there.
